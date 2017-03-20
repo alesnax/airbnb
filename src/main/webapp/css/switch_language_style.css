@@ -1,0 +1,42 @@
+.fl_r {
+    float: right;
+}
+
+.lang_link {
+    display: block;
+    padding: 0 5px;
+    height: 50px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+}
+
+
+.lang_label {
+    display: block;
+    padding: 17px 5px 16px 5px;
+    float: left;
+}
+
+.en_icon {
+    display: block;
+    float: right;
+    margin-top: 14px;
+    width: 36px;
+    height: 24px;
+    background: url(../img/britain_flag.png) no-repeat 0 0;
+}
+
+.ru_icon {
+    display: block;
+    float: right;
+    margin-top: 14px;
+    width: 36px;
+    height: 24px;
+    background: url(../img/ru_icon.png) no-repeat 0 0;
+}
+
+.lang_links:hover {
+    text-decoration: none;
+    background-color: #209ecc;
+}
