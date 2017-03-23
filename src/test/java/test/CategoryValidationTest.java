@@ -58,6 +58,8 @@ public class CategoryValidationTest {
         assertTrue("Errors list should be equal because all parameters are invalid and added errors title", errors.size() == 5);
     }
 
+
+
     @Test
     public void validateNewCategoryErrorsSizeListShouldBeEqual5CauseEmptyParams() {
         titleEn = "";
