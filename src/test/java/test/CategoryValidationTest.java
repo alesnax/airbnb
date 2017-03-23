@@ -51,6 +51,7 @@ public class CategoryValidationTest {
         titleRu = "description description description description description description description " +
                 "description description description description description description description description " +
                 "description description description description description description description ";
+
         descriptionEn = "Short";
         descriptionRu = "tooshort";
         errors = categoryValidation.validateNewCategory(titleEn, titleRu, descriptionEn, descriptionRu);
@@ -79,6 +80,7 @@ public class CategoryValidationTest {
         assertTrue("Errors list should be empty because all parameters are valid", errors.isEmpty());
     }*/
 
+
     @Test
     public void validateCorrectedCategoryErrorsSizeListShouldBeEqual7CauseInvalidParams() {
         titleEn = "Q";
@@ -104,6 +106,4 @@ public class CategoryValidationTest {
         errors = categoryValidation.validateCorrectedCategory(titleEn, titleRu, descriptionEn, descriptionRu, login, categoryStatus);
         assertTrue("Errors list should be equal because all parameters are empty and added errors title", errors.size() == 7);
     }
-
-
 }
