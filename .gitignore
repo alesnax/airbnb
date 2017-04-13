@@ -8,6 +8,11 @@
 # BlueJ files
 *.ctxt
 
+# eclipse
+.classpath
+.project
+.springBeans
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
