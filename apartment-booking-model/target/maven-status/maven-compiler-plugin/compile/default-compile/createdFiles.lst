@@ -1,0 +1,7 @@
+com\epam\apartment\domain\Apartment.class
+com\epam\apartment\domain\Entity.class
+com\epam\apartment\domain\User.class
+com\epam\apartment\domain\ApartmentType.class
+com\epam\apartment\domain\Booking.class
+com\epam\apartment\domain\ApartmentCriteria.class
+com\epam\apartment\domain\Location.class

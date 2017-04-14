@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="14" passed="14">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Command line suite" duration-ms="3189" started-at="2017-04-14T14:43:18Z" finished-at="2017-04-14T14:43:21Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="3189" started-at="2017-04-14T14:43:18Z" finished-at="2017-04-14T14:43:21Z">
+      <class name="com.epam.apartment.dao.ApartmentDaoTest">
+        <test-method status="PASS" signature="createSchema()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="createSchema" is-config="true" duration-ms="596" started-at="2017-04-14T17:43:18Z" finished-at="2017-04-14T17:43:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createSchema -->
+        <test-method status="PASS" signature="createSchema()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="createSchema" is-config="true" duration-ms="15" started-at="2017-04-14T17:43:18Z" finished-at="2017-04-14T17:43:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createSchema -->
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="2" started-at="2017-04-14T17:43:18Z" finished-at="2017-04-14T17:43:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="873" started-at="2017-04-14T17:43:18Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2017-04-14T17:43:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="1" started-at="2017-04-14T17:43:19Z" finished-at="2017-04-14T17:43:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.ApartmentDaoTest.findApartmentByCriteriaCityCountryTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="setUp" is-config="true" duration-ms="359" started-at="2017-04-14T17:43:19Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="findApartmentByCriteriaCityCountryTest()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="findApartmentByCriteriaCityCountryTest" duration-ms="58" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findApartmentByCriteriaCityCountryTest -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="2" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.ApartmentDaoTest.findApartmentByCriteriaCityCountryTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.ApartmentDaoTest.findAvailableApartmentsForDatesWithBookingsTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="setUp" is-config="true" duration-ms="138" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="findAvailableApartmentsForDatesWithBookingsTest()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="findAvailableApartmentsForDatesWithBookingsTest" duration-ms="30" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findAvailableApartmentsForDatesWithBookingsTest -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="1" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.ApartmentDaoTest.findAvailableApartmentsForDatesWithoutBookingsTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.ApartmentDaoTest.findAvailableApartmentsForDatesWithBookingsTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="setUp" is-config="true" duration-ms="190" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="findAvailableApartmentsForDatesWithoutBookingsTest()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="findAvailableApartmentsForDatesWithoutBookingsTest" duration-ms="10" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findAvailableApartmentsForDatesWithoutBookingsTest -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.ApartmentDaoTest.findAvailableApartmentsForDatesWithoutBookingsTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.ApartmentDaoTest.findConcreteApartmentByExistedNameTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="setUp" is-config="true" duration-ms="137" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="findConcreteApartmentByExistedNameTest()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="findConcreteApartmentByExistedNameTest" duration-ms="12" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findConcreteApartmentByExistedNameTest -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.ApartmentDaoTest.findConcreteApartmentByExistedNameTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="1" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.ApartmentDaoTest.findConcreteApartmentByUnexistedNameTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="setUp" is-config="true" duration-ms="102" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="findConcreteApartmentByUnexistedNameTest()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="findConcreteApartmentByUnexistedNameTest" duration-ms="9" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findConcreteApartmentByUnexistedNameTest -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="1" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.ApartmentDaoTest.findConcreteApartmentByUnexistedNameTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="springTestContextAfterTestClass" is-config="true" duration-ms="2" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+        <test-method status="PASS" signature="dropSchema()[pri:0, instance:com.epam.apartment.dao.ApartmentDaoTest@ea1a8d5]" name="dropSchema" is-config="true" duration-ms="12" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dropSchema -->
+        <test-method status="PASS" signature="dropSchema()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="dropSchema" is-config="true" duration-ms="4" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dropSchema -->
+      </class> <!-- com.epam.apartment.dao.ApartmentDaoTest -->
+      <class name="com.epam.apartment.dao.UserDaoTest">
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="1" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="15" started-at="2017-04-14T17:43:20Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="1" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.authoriseUserReturnNullTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="setUp" is-config="true" duration-ms="18" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="authoriseUserReturnNullTest()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="authoriseUserReturnNullTest" duration-ms="21" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- authoriseUserReturnNullTest -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.authoriseUserReturnNullTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.authoriseUserSuccessTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="setUp" is-config="true" duration-ms="19" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="authoriseUserSuccessTest()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="authoriseUserSuccessTest" duration-ms="2" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- authoriseUserSuccessTest -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.authoriseUserSuccessTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="setUp" is-config="true" duration-ms="19" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.changePswdSuccessTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="changePswdSuccessTest()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="changePswdSuccessTest" duration-ms="3" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- changePswdSuccessTest -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.changePswdSuccessTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="1" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.editProfileSuccessTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="setUp" is-config="true" duration-ms="64" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="editProfileSuccessTest()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="editProfileSuccessTest" duration-ms="9" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- editProfileSuccessTest -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="1" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.editProfileSuccessTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="setUp" is-config="true" duration-ms="21" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:20Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.editProfileThrowsDuplicatedKeyExceptionTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="editProfileThrowsDuplicatedKeyExceptionTest()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="editProfileThrowsDuplicatedKeyExceptionTest" duration-ms="207" started-at="2017-04-14T17:43:20Z" finished-at="2017-04-14T17:43:21Z">
+          <exception class="org.springframework.dao.DuplicateKeyException">
+            <message>
+              <![CDATA[PreparedStatementCallback; SQL [UPDATE USERS SET U_EMAIL = ?, U_NAME = ?, U_SURNAME = ? WHERE U_ID = ?]; Unique index or primary key violation: "U_EMAIL_UNIQUE_INDEX_4 ON PUBLIC.USERS(U_EMAIL) VALUES ('alesnax@gmail.com', 1)"; SQL statement:
+UPDATE USERS SET U_EMAIL = ?, U_NAME = ?, U_SURNAME = ? WHERE U_ID = ? [23505-193]; nested exception is org.h2.jdbc.JdbcSQLException: Unique index or primary key violation: "U_EMAIL_UNIQUE_INDEX_4 ON PUBLIC.USERS(U_EMAIL) VALUES ('alesnax@gmail.com', 1)"; SQL statement:
+UPDATE USERS SET U_EMAIL = ?, U_NAME = ?, U_SURNAME = ? WHERE U_ID = ? [23505-193]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.springframework.dao.DuplicateKeyException: PreparedStatementCallback; SQL [UPDATE USERS SET U_EMAIL = ?, U_NAME = ?, U_SURNAME = ? WHERE U_ID = ?]; Unique index or primary key violation: "U_EMAIL_UNIQUE_INDEX_4 ON PUBLIC.USERS(U_EMAIL) VALUES ('alesnax@gmail.com', 1)"; SQL statement:
+UPDATE USERS SET U_EMAIL = ?, U_NAME = ?, U_SURNAME = ? WHERE U_ID = ? [23505-193]; nested exception is org.h2.jdbc.JdbcSQLException: Unique index or primary key violation: "U_EMAIL_UNIQUE_INDEX_4 ON PUBLIC.USERS(U_EMAIL) VALUES ('alesnax@gmail.com', 1)"; SQL statement:
+UPDATE USERS SET U_EMAIL = ?, U_NAME = ?, U_SURNAME = ? WHERE U_ID = ? [23505-193]
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:649)
+	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:870)
+	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:894)
+	at org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate.update(NamedParameterJdbcTemplate.java:287)
+	at com.epam.apartment.dao.impl.JdbcUserDao.editProfile(JdbcUserDao.java:108)
+	at com.epam.apartment.dao.UserDaoTest.editProfileThrowsDuplicatedKeyExceptionTest(UserDaoTest.java:125)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.MethodInvocationHelper$1.runTestMethod(MethodInvocationHelper.java:200)
+	at org.springframework.test.context.testng.AbstractTestNGSpringContextTests.run(AbstractTestNGSpringContextTests.java:175)
+	at org.testng.internal.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:212)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:652)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:771)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
+	at org.testng.TestNG.run(TestNG.java:1032)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:77)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:159)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:106)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+Caused by: org.h2.jdbc.JdbcSQLException: Unique index or primary key violation: "U_EMAIL_UNIQUE_INDEX_4 ON PUBLIC.USERS(U_EMAIL) VALUES ('alesnax@gmail.com', 1)"; SQL statement:
+UPDATE USERS SET U_EMAIL = ?, U_NAME = ?, U_SURNAME = ? WHERE U_ID = ? [23505-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.index.BaseIndex.getDuplicateKeyException(BaseIndex.java:103)
+	at org.h2.mvstore.db.MVSecondaryIndex.checkUnique(MVSecondaryIndex.java:231)
+	at org.h2.mvstore.db.MVSecondaryIndex.add(MVSecondaryIndex.java:190)
+	at org.h2.mvstore.db.MVTable.addRow(MVTable.java:704)
+	at org.h2.table.Table.updateRows(Table.java:508)
+	at org.h2.command.dml.Update.update(Update.java:145)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:160)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:146)
+	at org.springframework.jdbc.core.JdbcTemplate$2.doInPreparedStatement(JdbcTemplate.java:877)
+	at org.springframework.jdbc.core.JdbcTemplate$2.doInPreparedStatement(JdbcTemplate.java:870)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:633)
+	... 42 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.springframework.dao.DuplicateKeyException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- editProfileThrowsDuplicatedKeyExceptionTest -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="1" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.editProfileThrowsDuplicatedKeyExceptionTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.registerNewUserSuccessTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="setUp" is-config="true" duration-ms="48" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="registerNewUserSuccessTest()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="registerNewUserSuccessTest" duration-ms="7" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- registerNewUserSuccessTest -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.registerNewUserSuccessTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="1" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.registerNewUserWithSameEmailTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="setUp" is-config="true" duration-ms="21" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="registerNewUserWithSameEmailTest()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="registerNewUserWithSameEmailTest" duration-ms="9" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <exception class="org.springframework.dao.DuplicateKeyException">
+            <message>
+              <![CDATA[PreparedStatementCallback; SQL [INSERT INTO USERS (U_EMAIL, U_NAME, U_SURNAME, U_PASSWORD, U_BIRTHDAY) VALUES (?, ?, ?, ?, ?)]; Unique index or primary key violation: "U_EMAIL_UNIQUE_INDEX_4 ON PUBLIC.USERS(U_EMAIL) VALUES ('qnewemail@gmail.com', 14)"; SQL statement:
+INSERT INTO USERS (U_EMAIL, U_NAME, U_SURNAME, U_PASSWORD, U_BIRTHDAY) VALUES (?, ?, ?, ?, ?) [23505-193]; nested exception is org.h2.jdbc.JdbcSQLException: Unique index or primary key violation: "U_EMAIL_UNIQUE_INDEX_4 ON PUBLIC.USERS(U_EMAIL) VALUES ('qnewemail@gmail.com', 14)"; SQL statement:
+INSERT INTO USERS (U_EMAIL, U_NAME, U_SURNAME, U_PASSWORD, U_BIRTHDAY) VALUES (?, ?, ?, ?, ?) [23505-193]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.springframework.dao.DuplicateKeyException: PreparedStatementCallback; SQL [INSERT INTO USERS (U_EMAIL, U_NAME, U_SURNAME, U_PASSWORD, U_BIRTHDAY) VALUES (?, ?, ?, ?, ?)]; Unique index or primary key violation: "U_EMAIL_UNIQUE_INDEX_4 ON PUBLIC.USERS(U_EMAIL) VALUES ('qnewemail@gmail.com', 14)"; SQL statement:
+INSERT INTO USERS (U_EMAIL, U_NAME, U_SURNAME, U_PASSWORD, U_BIRTHDAY) VALUES (?, ?, ?, ?, ?) [23505-193]; nested exception is org.h2.jdbc.JdbcSQLException: Unique index or primary key violation: "U_EMAIL_UNIQUE_INDEX_4 ON PUBLIC.USERS(U_EMAIL) VALUES ('qnewemail@gmail.com', 14)"; SQL statement:
+INSERT INTO USERS (U_EMAIL, U_NAME, U_SURNAME, U_PASSWORD, U_BIRTHDAY) VALUES (?, ?, ?, ?, ?) [23505-193]
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:649)
+	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:870)
+	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:894)
+	at org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate.update(NamedParameterJdbcTemplate.java:287)
+	at com.epam.apartment.dao.impl.JdbcUserDao.registerNewUser(JdbcUserDao.java:78)
+	at com.epam.apartment.dao.UserDaoTest.registerNewUserWithSameEmailTest(UserDaoTest.java:84)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.MethodInvocationHelper$1.runTestMethod(MethodInvocationHelper.java:200)
+	at org.springframework.test.context.testng.AbstractTestNGSpringContextTests.run(AbstractTestNGSpringContextTests.java:175)
+	at org.testng.internal.MethodInvocationHelper.invokeHookable(MethodInvocationHelper.java:212)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:652)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:771)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
+	at org.testng.TestNG.run(TestNG.java:1032)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:77)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:159)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:106)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+Caused by: org.h2.jdbc.JdbcSQLException: Unique index or primary key violation: "U_EMAIL_UNIQUE_INDEX_4 ON PUBLIC.USERS(U_EMAIL) VALUES ('qnewemail@gmail.com', 14)"; SQL statement:
+INSERT INTO USERS (U_EMAIL, U_NAME, U_SURNAME, U_PASSWORD, U_BIRTHDAY) VALUES (?, ?, ?, ?, ?) [23505-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.index.BaseIndex.getDuplicateKeyException(BaseIndex.java:103)
+	at org.h2.mvstore.db.MVSecondaryIndex.checkUnique(MVSecondaryIndex.java:231)
+	at org.h2.mvstore.db.MVSecondaryIndex.add(MVSecondaryIndex.java:190)
+	at org.h2.mvstore.db.MVTable.addRow(MVTable.java:704)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:156)
+	at org.h2.command.dml.Insert.update(Insert.java:114)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:160)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:146)
+	at org.springframework.jdbc.core.JdbcTemplate$2.doInPreparedStatement(JdbcTemplate.java:877)
+	at org.springframework.jdbc.core.JdbcTemplate$2.doInPreparedStatement(JdbcTemplate.java:870)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:633)
+	... 42 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.springframework.dao.DuplicateKeyException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- registerNewUserWithSameEmailTest -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.registerNewUserWithSameEmailTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.restorePswdSuccessTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="setUp" is-config="true" duration-ms="40" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="restorePswdSuccessTest()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="restorePswdSuccessTest" duration-ms="2" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- restorePswdSuccessTest -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.restorePswdSuccessTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.restorePswdWithNotFoundEmailTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="setUp" is-config="true" duration-ms="37" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="restorePswdWithNotFoundEmailTest()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="restorePswdWithNotFoundEmailTest" duration-ms="18" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- restorePswdWithNotFoundEmailTest -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="1" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.epam.apartment.dao.UserDaoTest.restorePswdWithNotFoundEmailTest()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:com.epam.apartment.dao.UserDaoTest@1f57539]" name="springTestContextAfterTestClass" is-config="true" duration-ms="0" started-at="2017-04-14T17:43:21Z" finished-at="2017-04-14T17:43:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- com.epam.apartment.dao.UserDaoTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
+</testng-results>

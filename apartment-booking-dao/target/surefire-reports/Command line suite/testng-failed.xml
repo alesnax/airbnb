@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [Command line suite]">
+  <test name="Command line test(failed)">
+    <classes>
+      <class name="com.epam.apartment.dao.UserDaoTest">
+        <methods>
+          <include name="authoriseUserSuccessTest"/>
+          <include name="changePswdSuccessTest"/>
+          <include name="authoriseUserReturnNullTest"/>
+          <include name="editProfileThrowsDuplicatedKeyExceptionTest"/>
+          <include name="createSchema"/>
+          <include name="registerNewUserWithSameEmailTest"/>
+          <include name="registerNewUserSuccessTest"/>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="restorePswdSuccessTest"/>
+          <include name="editProfileSuccessTest"/>
+          <include name="springTestContextAfterTestMethod"/>
+          <include name="restorePswdWithNotFoundEmailTest"/>
+        </methods>
+      </class> <!-- com.epam.apartment.dao.UserDaoTest -->
+      <class name="com.epam.apartment.dao.ApartmentDaoTest">
+        <methods>
+          <include name="findConcreteApartmentByUnexistedNameTest"/>
+          <include name="findApartmentByCriteriaCityCountryTest"/>
+          <include name="findAvailableApartmentsForDatesWithBookingsTest"/>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="createSchema"/>
+          <include name="springTestContextAfterTestMethod"/>
+          <include name="findAvailableApartmentsForDatesWithoutBookingsTest"/>
+          <include name="findConcreteApartmentByExistedNameTest"/>
+        </methods>
+      </class> <!-- com.epam.apartment.dao.ApartmentDaoTest -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [Command line suite] -->
