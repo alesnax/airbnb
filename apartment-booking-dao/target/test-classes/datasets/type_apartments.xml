@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dataset>
-	<TYPE_APARTMENTS TY_ID="1" TY_TYPE="Entire home" TY_DESCRIPTION="Have a place to yourself"/>
-	<TYPE_APARTMENTS TY_ID="2" TY_TYPE="Private room" TY_DESCRIPTION="Have your own room and share some common spaces"/>
-	<TYPE_APARTMENTS TY_ID="3" TY_TYPE="Shared room" TY_DESCRIPTION="Stay in a shared space, like a common room"/>
-</dataset>

@@ -8,7 +8,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.epam.apartment.dao.ApartmentDao;
-import com.epam.apartment.dao.UserDao;
+//import com.epam.apartment.dao.UserDao;
 import com.epam.apartment.domain.Apartment;
 import com.epam.apartment.domain.ApartmentCriteria;
 import com.epam.apartment.domain.User;
