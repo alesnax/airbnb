@@ -10,18 +10,18 @@
 
 # eclipse
 
-#.classpath
-#.project
-#.springBeans
-#.prefs
-#.lst
-
-#.settings/
-#*.project
-#*.classpath
-#*.prefs
-#.metadata/
-#.factorypath
+.classpath
+.project
+.springBeans
+.prefs
+.lst
+target/
+.settings/
+*.project
+*.classpath
+test-output/
+.metadata/
+.factorypath
 
 
 # Mobile Tools for Java (J2ME)

@@ -81,8 +81,8 @@ public class JdbcUserDao implements UserDao {
 	
 	public boolean changePswd(int id, String oldPswd, String newPswd) {
 		boolean updated = false;
-		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-		namedParameters.addValue(ID_PARAM, id).addValue(OLD_PSWD_PARAM, oldPswd).addValue(NEW_PSWD_PARAM, newPswd);
+		SqlParameterSource namedParameters = new MapSqlParameterSource()
+		.addValue(ID_PARAM, id).addValue(OLD_PSWD_PARAM, oldPswd).addValue(NEW_PSWD_PARAM, newPswd);
 		
 		int rowsAffected = this.jdbcTemplate.update(UPDATE_PASSWORD_BY_ID, namedParameters);
 		if (rowsAffected == EXPECTED_ROW_NUMBER) {
