@@ -122,7 +122,7 @@ public class UserDaoTest extends DaoTest {
 		user.setSurname("nax");
 		user.setEmail("alesnax@gmail.com");
 		
-		User editedUser = userDao.editProfile(user);
+		userDao.editProfile(user);
 	}
 	
 	

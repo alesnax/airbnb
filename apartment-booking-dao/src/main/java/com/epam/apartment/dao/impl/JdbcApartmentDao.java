@@ -3,12 +3,12 @@ package com.epam.apartment.dao.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -35,8 +35,8 @@ public class JdbcApartmentDao implements ApartmentDao {
 
 	private static final String SELECT_APARTMENTS_BY_CRITERIA = "SELECT AP_ID, AP_NAME, AP_PRICE, AP_MAX_GUEST_NUMBER, LO_COUNTRY, LO_CITY, LO_STREET, LO_BUILDING_NO, TY_TYPE, TY_DESCRIPTION "
 			+ "FROM APARTMENTS JOIN LOCATIONS ON LOCATIONS.LO_ID = AP_LOCATION_ID JOIN TYPE_APARTMENTS ON TYPE_APARTMENTS.TY_ID = APARTMENTS.AP_TYPE_ID "
-			+ "WHERE AP_ID NOT IN (SELECT BO_APARTMENT FROM BOOKINGS WHERE (:arrivalDate IS NULL OR :arrivalDate < BO_END) AND (:leavingDate IS NULL OR :leavingDate > BO_START)) "
-			+ "AND (:country IS NULL OR :country = LO_COUNTRY) AND (:city IS NULL OR :city = LO_CITY) AND (:guestNumber IS NULL OR :guestNumber = AP_MAX_GUEST_NUMBER) AND (:maxPrice IS NULL OR :maxPrice <= AP_PRICE)";
+			+ "WHERE AP_ID NOT IN (SELECT BO_APARTMENT FROM BOOKINGS WHERE (:p_ARRIVAL_DATE IS NULL OR :p_ARRIVAL_DATE < BO_END) AND (:p_LEAVING_DATE IS NULL OR :p_LEAVING_DATE > BO_START)) "
+			+ "AND (:p_COUNTRY IS NULL OR :p_COUNTRY = LO_COUNTRY) AND (:p_CITY IS NULL OR :p_CITY = LO_CITY) AND (:p_GUEST_NUMBER IS NULL OR :p_GUEST_NUMBER = AP_MAX_GUEST_NUMBER) AND (:p_MAX_PRICE IS NULL OR :p_MAX_PRICE <= AP_PRICE)";
 
 	private static final String COUNTRY = "LO_COUNTRY";
 	private static final String CITY = "LO_CITY";
@@ -52,6 +52,10 @@ public class JdbcApartmentDao implements ApartmentDao {
 	private static final String ARRIVAL_PARAM = "p_ARRIVAL_DATE";
 	private static final String LEAVING_PARAM = "p_LEAVING_DATE";
 	private static final String NAME_PARAM = "p_NAME";
+	private static final String COUNTRY_PARAM = "p_COUNTRY";
+	private static final String CITY_PARAM = "p_CITY";
+	private static final String GUEST_NUMBER_PARAM = "p_GUEST_NUMBER";
+	private static final String MAX_PRICE_PARAM = "p_MAX_PRICE";
 
 	private static final String PERCENT = "%";
 
@@ -63,8 +67,8 @@ public class JdbcApartmentDao implements ApartmentDao {
 	}
 
 	public List<Apartment> findAvailableApartments(LocalDate arrivalDate, LocalDate leavingDate) {
-		SqlParameterSource namedParameters = new MapSqlParameterSource().addValue(ARRIVAL_PARAM, arrivalDate)
-				.addValue(LEAVING_PARAM, leavingDate);
+		SqlParameterSource namedParameters = new MapSqlParameterSource().addValue(ARRIVAL_PARAM, Date.valueOf(arrivalDate))
+				.addValue(LEAVING_PARAM, Date.valueOf(leavingDate));
 		return this.jdbcTemplate.query(SELECT_AVAILABLE_APARTMENTS, namedParameters, new ApatrmentMapper());
 	}
 
@@ -75,7 +79,12 @@ public class JdbcApartmentDao implements ApartmentDao {
 	}
 
 	public List<Apartment> findAvailableApartmentByCriteria(ApartmentCriteria criteria) {
-		SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(criteria);
+		Date arrivalDate = criteria.getArrivalDate() != null ? Date.valueOf(criteria.getArrivalDate()) : null;
+		Date leavingDate = criteria.getLeavingDate() != null ? Date.valueOf(criteria.getLeavingDate()) : null;
+		SqlParameterSource namedParameters = new MapSqlParameterSource().addValue(COUNTRY_PARAM, criteria.getCountry())
+				.addValue(CITY_PARAM, criteria.getCity()).addValue(GUEST_NUMBER_PARAM, criteria.getGuestNumber()).addValue(MAX_PRICE_PARAM, criteria.getMaxPrice())
+				.addValue(ARRIVAL_PARAM, arrivalDate).addValue(LEAVING_PARAM, leavingDate);
+		
 		return this.jdbcTemplate.query(SELECT_APARTMENTS_BY_CRITERIA, namedParameters, new ApatrmentMapper());
 	}
 

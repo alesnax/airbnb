@@ -9,10 +9,19 @@
 *.ctxt
 
 # eclipse
-.classpath
-.project
-.springBeans
-.prefs
+
+#.classpath
+#.project
+#.springBeans
+#.prefs
+#.lst
+
+#.settings/
+#*.project
+#*.classpath
+#*.prefs
+#.metadata/
+#.factorypath
 
 
 # Mobile Tools for Java (J2ME)

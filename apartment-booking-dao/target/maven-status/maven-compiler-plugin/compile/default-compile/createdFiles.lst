@@ -1,8 +1,0 @@
-com\epam\apartment\dao\ApartmentDao.class
-com\epam\apartment\dao\impl\JdbcApartmentDao$ApatrmentMapper.class
-com\epam\apartment\dao\UserDao.class
-com\epam\apartment\dao\impl\JdbcUserDao$1.class
-com\epam\apartment\dao\impl\JdbcApartmentDao.class
-com\epam\apartment\dao\impl\JdbcUserDao.class
-com\epam\apartment\dao\impl\JdbcUserDao$UserMapper.class
-com\epam\apartment\dao\impl\JdbcApartmentDao$1.class

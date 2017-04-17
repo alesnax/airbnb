@@ -2,28 +2,28 @@
 <testng-results skipped="0" failed="0" total="10" passed="10">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1315" started-at="2017-04-14T14:26:33Z" finished-at="2017-04-14T14:26:35Z">
+  <suite name="Default suite" duration-ms="1281" started-at="2017-04-17T08:01:22Z" finished-at="2017-04-17T08:01:23Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1315" started-at="2017-04-14T14:26:33Z" finished-at="2017-04-14T14:26:35Z">
+    <test name="Default test" duration-ms="1281" started-at="2017-04-17T08:01:22Z" finished-at="2017-04-17T08:01:23Z">
       <class name="com.epam.apartment.service.UserServiceTest">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="setUp" is-config="true" duration-ms="1054" started-at="2017-04-14T17:26:33Z" finished-at="2017-04-14T17:26:35Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="setUp" is-config="true" duration-ms="1079" started-at="2017-04-17T11:01:22Z" finished-at="2017-04-17T11:01:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="aithoriseUserUnexistedEmailTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="aithoriseUserUnexistedEmailTest" duration-ms="33" started-at="2017-04-14T17:26:35Z" finished-at="2017-04-14T17:26:35Z">
+        <test-method status="PASS" signature="aithoriseUserUnexistedEmailTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="aithoriseUserUnexistedEmailTest" duration-ms="41" started-at="2017-04-17T11:01:23Z" finished-at="2017-04-17T11:01:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- aithoriseUserUnexistedEmailTest -->
-        <test-method status="PASS" signature="authoriseUserSuccessTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="authoriseUserSuccessTest" duration-ms="9" started-at="2017-04-14T17:26:35Z" finished-at="2017-04-14T17:26:35Z">
+        <test-method status="PASS" signature="authoriseUserSuccessTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="authoriseUserSuccessTest" duration-ms="3" started-at="2017-04-17T11:01:23Z" finished-at="2017-04-17T11:01:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- authoriseUserSuccessTest -->
-        <test-method status="PASS" signature="changePswdSuccessTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="changePswdSuccessTest" duration-ms="5" started-at="2017-04-14T17:26:35Z" finished-at="2017-04-14T17:26:35Z">
+        <test-method status="PASS" signature="changePswdSuccessTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="changePswdSuccessTest" duration-ms="3" started-at="2017-04-17T11:01:23Z" finished-at="2017-04-17T11:01:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- changePswdSuccessTest -->
-        <test-method status="PASS" signature="editProfileDuplicatedKeyExceptionTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="editProfileDuplicatedKeyExceptionTest" duration-ms="12" started-at="2017-04-14T17:26:35Z" finished-at="2017-04-14T17:26:35Z">
+        <test-method status="PASS" signature="editProfileDuplicatedKeyExceptionTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="editProfileDuplicatedKeyExceptionTest" duration-ms="11" started-at="2017-04-17T11:01:23Z" finished-at="2017-04-17T11:01:23Z">
           <exception class="org.springframework.dao.DuplicateKeyException">
             <full-stacktrace>
               <![CDATA[org.springframework.dao.DuplicateKeyException
@@ -33,15 +33,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- editProfileDuplicatedKeyExceptionTest -->
-        <test-method status="PASS" signature="editProfileSuccessTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="editProfileSuccessTest" duration-ms="5" started-at="2017-04-14T17:26:35Z" finished-at="2017-04-14T17:26:35Z">
+        <test-method status="PASS" signature="editProfileSuccessTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="editProfileSuccessTest" duration-ms="6" started-at="2017-04-17T11:01:23Z" finished-at="2017-04-17T11:01:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- editProfileSuccessTest -->
-        <test-method status="PASS" signature="registerNewUserSuccessTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="registerNewUserSuccessTest" duration-ms="15" started-at="2017-04-14T17:26:35Z" finished-at="2017-04-14T17:26:35Z">
+        <test-method status="PASS" signature="registerNewUserSuccessTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="registerNewUserSuccessTest" duration-ms="19" started-at="2017-04-17T11:01:23Z" finished-at="2017-04-17T11:01:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- registerNewUserSuccessTest -->
-        <test-method status="PASS" signature="registerNewUserThrowDuplicatedKeyExceptionTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="registerNewUserThrowDuplicatedKeyExceptionTest" duration-ms="3" started-at="2017-04-14T17:26:35Z" finished-at="2017-04-14T17:26:35Z">
+        <test-method status="PASS" signature="registerNewUserThrowDuplicatedKeyExceptionTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="registerNewUserThrowDuplicatedKeyExceptionTest" duration-ms="3" started-at="2017-04-17T11:01:23Z" finished-at="2017-04-17T11:01:23Z">
           <exception class="org.springframework.dao.DuplicateKeyException">
             <full-stacktrace>
               <![CDATA[org.springframework.dao.DuplicateKeyException
@@ -51,7 +51,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- registerNewUserThrowDuplicatedKeyExceptionTest -->
-        <test-method status="PASS" signature="registerNewUserUnmatchingPswdsTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="registerNewUserUnmatchingPswdsTest" duration-ms="3" started-at="2017-04-14T17:26:35Z" finished-at="2017-04-14T17:26:35Z">
+        <test-method status="PASS" signature="registerNewUserUnmatchingPswdsTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="registerNewUserUnmatchingPswdsTest" duration-ms="2" started-at="2017-04-17T11:01:23Z" finished-at="2017-04-17T11:01:23Z">
           <exception class="com.epam.apartment.service.ServiceException">
             <full-stacktrace>
               <![CDATA[com.epam.apartment.service.ServiceException
@@ -87,11 +87,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- registerNewUserUnmatchingPswdsTest -->
-        <test-method status="PASS" signature="restorePswdMatchingPswdsTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="restorePswdMatchingPswdsTest" duration-ms="16" started-at="2017-04-14T17:26:35Z" finished-at="2017-04-14T17:26:35Z">
+        <test-method status="PASS" signature="restorePswdMatchingPswdsTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="restorePswdMatchingPswdsTest" duration-ms="10" started-at="2017-04-17T11:01:23Z" finished-at="2017-04-17T11:01:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- restorePswdMatchingPswdsTest -->
-        <test-method status="PASS" signature="restorePswdUnmatchingPswdsTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="restorePswdUnmatchingPswdsTest" duration-ms="35" started-at="2017-04-14T17:26:35Z" finished-at="2017-04-14T17:26:35Z">
+        <test-method status="PASS" signature="restorePswdUnmatchingPswdsTest()[pri:0, instance:com.epam.apartment.service.UserServiceTest@482f8f11]" name="restorePswdUnmatchingPswdsTest" duration-ms="12" started-at="2017-04-17T11:01:23Z" finished-at="2017-04-17T11:01:23Z">
           <exception class="com.epam.apartment.service.ServiceException">
             <full-stacktrace>
               <![CDATA[com.epam.apartment.service.ServiceException

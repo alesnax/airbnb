@@ -9,7 +9,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -71,9 +70,11 @@ public class JdbcUserDao implements UserDao {
 	}
 
 	public void registerNewUser(User user, String pswd) {
+		Date bithday = user.getBirthday() != null ? Date.valueOf(user.getBirthday()) : null;
+		
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue(EMAIL_PARAM, user.getEmail()).addValue(NAME_PARAM, user.getName())
-		.addValue(SURNAME_PARAM, user.getSurname()).addValue(PSWD_PARAM, pswd).addValue(BIRTHDAY_PARAM, user.getBirthday());
+		.addValue(SURNAME_PARAM, user.getSurname()).addValue(PSWD_PARAM, pswd).addValue(BIRTHDAY_PARAM, bithday);
 		
 		this.jdbcTemplate.update(INSERT_USER_SQL, namedParameters);
 	}
