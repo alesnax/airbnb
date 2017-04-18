@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 		if (validatePswds(pswd, copyPswd)) {
 			userDao.registerNewUser(user, encryptPswd(pswd));
 		} else {
-			throw new ServiceException(/* "Passwords don't match" */);
+			throw new ServiceException("Passwords don't match");
 		}
 	}
 
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean restorePswd(String email, char[] pswd, char[] copyPswd) throws ServiceException {
 		if (!validatePswds(pswd, copyPswd)) {
-			throw new ServiceException(/* "Passwords don't match" */);
+			throw new ServiceException("Passwords don't match");
 		}
 		return userDao.restorePswd(email, encryptPswd(pswd));
 	}
@@ -64,15 +64,15 @@ public class UserServiceImpl implements UserService {
 		if (pswd.length != copyPswd.length) {
 			return false;
 		}
-		if (pswd.length <= 5){
+		if (pswd.length <= 5) {
 			return false;
 		}
-		for(int i = 0; i < pswd.length; i++){
-			if(pswd[i] != copyPswd[i]){
+		for (int i = 0; i < pswd.length; i++) {
+			if (pswd[i] != copyPswd[i]) {
 				return false;
 			}
 		}
-		
+
 		return true;
 	}
 

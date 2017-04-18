@@ -48,7 +48,7 @@ public class JdbcUserDao implements UserDao {
 	private static final String ID_PARAM = "p_ID";
 	private static final String OLD_PSWD_PARAM = "p_OLD_PSWD";
 	private static final String NEW_PSWD_PARAM = "p_NEW_PSWD";
-	
+
 	private NamedParameterJdbcTemplate jdbcTemplate;
 
 	@Autowired
@@ -57,12 +57,10 @@ public class JdbcUserDao implements UserDao {
 	}
 
 	public User authoriseUser(String email, String pswd) {
-		MapSqlParameterSource namedParameters = new MapSqlParameterSource().addValue(EMAIL_PARAM, email)
-				.addValue(PSWD_PARAM, pswd);
+		MapSqlParameterSource namedParameters = new MapSqlParameterSource().addValue(EMAIL_PARAM, email).addValue(PSWD_PARAM, pswd);
 		User user = null;
 		try {
-			user = this.jdbcTemplate.queryForObject(SELECT_USER_BY_PSWD, namedParameters,
-					new UserMapper());
+			user = this.jdbcTemplate.queryForObject(SELECT_USER_BY_PSWD, namedParameters, new UserMapper());
 		} catch (EmptyResultDataAccessException e) {
 			user = null;
 		}
@@ -71,19 +69,18 @@ public class JdbcUserDao implements UserDao {
 
 	public void registerNewUser(User user, String pswd) {
 		Date bithday = user.getBirthday() != null ? Date.valueOf(user.getBirthday()) : null;
-		
+
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-		namedParameters.addValue(EMAIL_PARAM, user.getEmail()).addValue(NAME_PARAM, user.getName())
-		.addValue(SURNAME_PARAM, user.getSurname()).addValue(PSWD_PARAM, pswd).addValue(BIRTHDAY_PARAM, bithday);
-		
+		namedParameters.addValue(EMAIL_PARAM, user.getEmail()).addValue(NAME_PARAM, user.getName()).addValue(SURNAME_PARAM, user.getSurname()).addValue(PSWD_PARAM, pswd).addValue(BIRTHDAY_PARAM,
+				bithday);
+
 		this.jdbcTemplate.update(INSERT_USER_SQL, namedParameters);
 	}
-	
+
 	public boolean changePswd(int id, String oldPswd, String newPswd) {
 		boolean updated = false;
-		SqlParameterSource namedParameters = new MapSqlParameterSource()
-		.addValue(ID_PARAM, id).addValue(OLD_PSWD_PARAM, oldPswd).addValue(NEW_PSWD_PARAM, newPswd);
-		
+		SqlParameterSource namedParameters = new MapSqlParameterSource().addValue(ID_PARAM, id).addValue(OLD_PSWD_PARAM, oldPswd).addValue(NEW_PSWD_PARAM, newPswd);
+
 		int rowsAffected = this.jdbcTemplate.update(UPDATE_PASSWORD_BY_ID, namedParameters);
 		if (rowsAffected == EXPECTED_ROW_NUMBER) {
 			updated = true;
@@ -93,8 +90,7 @@ public class JdbcUserDao implements UserDao {
 
 	public boolean restorePswd(String email, String newPswd) {
 		boolean updated = false;
-		MapSqlParameterSource namedParameters = new MapSqlParameterSource().addValue(EMAIL_PARAM, email)
-				.addValue(PSWD_PARAM, newPswd);
+		MapSqlParameterSource namedParameters = new MapSqlParameterSource().addValue(EMAIL_PARAM, email).addValue(PSWD_PARAM, newPswd);
 		int rowsAffected = this.jdbcTemplate.update(UPDATE_PSWD_BY_EMAIL, namedParameters);
 		if (rowsAffected == EXPECTED_ROW_NUMBER) {
 			updated = true;
@@ -119,7 +115,7 @@ public class JdbcUserDao implements UserDao {
 			user.setName(rs.getString(NAME));
 			user.setSurname(rs.getString(SURNAME));
 			Date birthday = rs.getDate(BIRTHDAY);
-			if(birthday != null) {
+			if (birthday != null) {
 				user.setBirthday(birthday.toLocalDate());
 			}
 			return user;

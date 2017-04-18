@@ -1,12 +1,40 @@
 package com.epam.apartment.service;
 
-public class ServiceException extends Exception{
+public class ServiceException extends Exception {
+	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
+	 * Constructs a <code>ServiceException</code> with the specified detail
+	 * message.
+	 *
+	 * @param message
+	 *            the detail message.
 	 */
-	private static final long serialVersionUID = -4455875180212921021L;
+	public ServiceException(String message) {
+		super(message);
+	}
 
-	
-	
+	/**
+	 * Constructs a <code>ServiceException</code> with the specified detail
+	 * message and caught exception.
+	 *
+	 * @param message
+	 *            the detail message.
+	 * @param e
+	 *            is thrown exception
+	 */
+	public ServiceException(String message, Exception e) {
+		super(message, e);
+	}
+
+	/**
+	 * Constructs a <code>ServiceException</code> with caught exception.
+	 *
+	 * @param e
+	 *            is thrown exception
+	 */
+	public ServiceException(Exception e) {
+		super(e);
+	}
+
 }

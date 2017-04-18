@@ -21,11 +21,10 @@ public class ApartmentServiceImpl implements ApartmentService {
 	private ApartmentDao apartmentDao;
 
 	@Override
-	public List<Apartment> findAvailableApartments(LocalDate arrivalDate, LocalDate leavingDate)
-			throws ServiceException {
+	public List<Apartment> findAvailableApartments(LocalDate arrivalDate, LocalDate leavingDate) throws ServiceException {
 		List<Apartment> apartments = null;
 		if (!validateDates(arrivalDate, leavingDate)) {
-			throw new ServiceException();
+			throw new ServiceException("Validation error: arrival after leaving!");
 		} else {
 			apartments = apartmentDao.findAvailableApartments(arrivalDate, leavingDate);
 		}
