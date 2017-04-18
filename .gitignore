@@ -22,7 +22,7 @@ target/
 test-output/
 .metadata/
 .factorypath
-
+Main.java
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
