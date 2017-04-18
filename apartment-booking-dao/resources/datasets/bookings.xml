@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<BOOKINGS BO_ID="8" BO_USER="25" BO_APARTMENT="4" BO_START="2017-04-04" BO_END="2017-04-10"/>
+	<BOOKINGS BO_ID="9" BO_USER="26" BO_APARTMENT="8" BO_START="2017-04-07" BO_END="2017-04-11"/>
+</dataset>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<LOCATIONS LO_ID="1" LO_COUNTRY="Belarus" LO_CITY="Hrodna" LO_STREET="Pashkevich" LO_BUILDING_NO="3a"/>
+	<LOCATIONS LO_ID="2" LO_COUNTRY="Belarus" LO_CITY="Hrodna" LO_STREET="Mitskeviecha" LO_BUILDING_NO="1"/>
+	<LOCATIONS LO_ID="3" LO_COUNTRY="Belarus" LO_CITY="Brest" LO_STREET="Kalinouskaha" LO_BUILDING_NO="34"/>
+	<LOCATIONS LO_ID="4" LO_COUNTRY="Belarus" LO_CITY="Brest" LO_STREET="Kalinouskaha" LO_BUILDING_NO="45"/>
+	<LOCATIONS LO_ID="5" LO_COUNTRY="Belarus" LO_CITY="Minsk" LO_STREET="Muliavina" LO_BUILDING_NO="23"/>
+	<LOCATIONS LO_ID="6" LO_COUNTRY="Belarus" LO_CITY="Minsk" LO_STREET="Brouki" LO_BUILDING_NO="2"/>
+	<LOCATIONS LO_ID="7" LO_COUNTRY="Lithuania" LO_CITY="Vilnius" LO_STREET="Vitautas" LO_BUILDING_NO="1"/>
+	<LOCATIONS LO_ID="8" LO_COUNTRY="Lithuania" LO_CITY="Vilnius" LO_STREET="Yahayla" LO_BUILDING_NO="52"/>
+	<LOCATIONS LO_ID="9" LO_COUNTRY="Lithuania" LO_CITY="Vilnius" LO_STREET="Vitautas" LO_BUILDING_NO="16"/>
+	<LOCATIONS LO_ID="10" LO_COUNTRY="Lithuania" LO_CITY="Vilnius" LO_STREET="Mindaugasa" LO_BUILDING_NO="32"/>
+	<LOCATIONS LO_ID="11" LO_COUNTRY="Lithuania" LO_CITY="Vilnius" LO_STREET="Vitautas" LO_BUILDING_NO="76"/>
+	<LOCATIONS LO_ID="12" LO_COUNTRY="Lithuania" LO_CITY="Klaipeda" LO_STREET="Yahayla" LO_BUILDING_NO="123"/>
+	<LOCATIONS LO_ID="13" LO_COUNTRY="Lithuania" LO_CITY="Klaipeda" LO_STREET="Mitskevica" LO_BUILDING_NO="43"/>
+	<LOCATIONS LO_ID="14" LO_COUNTRY="Lithuania" LO_CITY="Klaipeda" LO_STREET="Mindaugasa" LO_BUILDING_NO="87"/>
+	<LOCATIONS LO_ID="15" LO_COUNTRY="Ukraine" LO_CITY="Lviv" LO_STREET="Zalataya Hara" LO_BUILDING_NO="12"/>
+	<LOCATIONS LO_ID="16" LO_COUNTRY="Ukraine" LO_CITY="Lviv" LO_STREET="Chernovola" LO_BUILDING_NO="111"/>
+	<LOCATIONS LO_ID="17" LO_COUNTRY="Ukraine" LO_CITY="Lviv" LO_STREET="Akademichna" LO_BUILDING_NO="58"/>
+	<LOCATIONS LO_ID="18" LO_COUNTRY="Ukraine" LO_CITY="Lviv" LO_STREET="Chernovola" LO_BUILDING_NO="36"/>
+	<LOCATIONS LO_ID="19" LO_COUNTRY="Ukraine" LO_CITY="Lviv" LO_STREET="Rynak" LO_BUILDING_NO="2"/>
+	<LOCATIONS LO_ID="20" LO_COUNTRY="Ukraine" LO_CITY="Kiev" LO_STREET="Pochtova" LO_BUILDING_NO="24"/>
+	<LOCATIONS LO_ID="21" LO_COUNTRY="Ukraine" LO_CITY="Kiev" LO_STREET="Khreschatik" LO_BUILDING_NO="41"/>
+	
+</dataset>
