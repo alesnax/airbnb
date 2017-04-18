@@ -11,7 +11,7 @@
 	<version>1.0</version>
 	<name>apartment-booking-service</name>
 	<description>service layer</description>
-	
+
 	<properties>
 		<!-- Generic properties -->
 		<java.version>1.8</java.version>
@@ -20,19 +20,10 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
-<!-- 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.1</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build> -->
+	<!-- <build> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+		<artifactId>maven-compiler-plugin</artifactId> <version>3.6.1</version> <configuration> 
+		<source>1.8</source> <target>1.8</target> </configuration> </plugin> </plugins> 
+		</build> -->
 	<dependencies>
 		<dependency>
 			<groupId>com.epam.apartment</groupId>
@@ -47,5 +38,13 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
