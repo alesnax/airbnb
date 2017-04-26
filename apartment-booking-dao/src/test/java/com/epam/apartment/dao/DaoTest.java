@@ -8,13 +8,15 @@ import org.dbunit.dataset.IDataSet;
 import org.dbunit.operation.DatabaseOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.BeforeMethod;
 
 import com.epam.apartment.configuration.TestConfiguration;
 
-
 @ContextConfiguration(classes = { TestConfiguration.class })
+@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class })
 public abstract class DaoTest extends AbstractTestNGSpringContextTests {
 
 	@Autowired
