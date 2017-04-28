@@ -1,6 +1,6 @@
 package com.epam.apartment.service;
 
-import com.epam.apartment.domain.User;
+import com.epam.apartment.model.User;
 
 public interface UserService {
 

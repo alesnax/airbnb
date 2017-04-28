@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.epam.apartment.dao.ApartmentDao;
-import com.epam.apartment.domain.Apartment;
-import com.epam.apartment.domain.ApartmentCriteria;
+import com.epam.apartment.model.Apartment;
+import com.epam.apartment.model.ApartmentCriteria;
 import com.epam.apartment.service.ApartmentService;
 import com.epam.apartment.service.ServiceException;
 

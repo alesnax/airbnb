@@ -1,14 +1,11 @@
 package com.epam.apartment.service;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
+import static org.mockito.ArgumentMatchers.*;
 import java.time.LocalDate;
 
 import org.mockito.InjectMocks;
@@ -20,8 +17,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.epam.apartment.dao.UserDao;
-import com.epam.apartment.domain.User;
+import com.epam.apartment.model.User;
 import com.epam.apartment.service.impl.UserServiceImpl;
+
 
 public class UserServiceTest {
 

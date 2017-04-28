@@ -17,8 +17,8 @@ import org.testng.Assert;
 
 
 import com.epam.apartment.dao.ApartmentDao;
-import com.epam.apartment.domain.Apartment;
-import com.epam.apartment.domain.ApartmentCriteria;
+import com.epam.apartment.model.Apartment;
+import com.epam.apartment.model.ApartmentCriteria;
 import com.epam.apartment.service.impl.ApartmentServiceImpl;
 
 

@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.epam.apartment.dao.UserDao;
-import com.epam.apartment.domain.User;
+import com.epam.apartment.model.User;
 import com.epam.apartment.service.ServiceException;
 import com.epam.apartment.service.UserService;
 
