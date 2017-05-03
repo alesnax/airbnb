@@ -3,45 +3,45 @@ package com.epam.apartment.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.apartment.dao.UserDao;
+import com.epam.apartment.dto.UserDto;
+import com.epam.apartment.exception.EmailExistsException;
 import com.epam.apartment.model.User;
-import com.epam.apartment.service.ServiceException;
 import com.epam.apartment.service.UserService;
 
-@Service
+@Service("userService")
 @Scope(value = "singleton")
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
 
+	@Transactional
 	@Override
-	public void registerNewUser(User user, char[] pswd, char[] copyPswd) throws ServiceException {
-		if (validatePswds(pswd, copyPswd)) {
-			userDao.registerNewUser(user, encryptPswd(pswd));
-		} else {
-			throw new ServiceException("Passwords don't match");
+	public User registerNewUser(UserDto accountDto) throws EmailExistsException {
+
+		if (emailExist(accountDto.getEmail())) {
+			throw new EmailExistsException("There is an account with that email address: " + accountDto.getEmail());
 		}
+		return userDao.registerNewUser(accountDto);
 	}
 
 	@Override
-	public User authoriseUser(String email, char[] pswd) {
-		User user = userDao.authoriseUser(email, encryptPswd(pswd));
+	public User authoriseUser(String email, String pswd) {
+		User user = userDao.authoriseUser(email, pswd);
 		return user;
 	}
 
 	@Override
-	public boolean changePswd(int id, char[] oldPswd, char[] newPswd) {
-		return userDao.changePswd(id, encryptPswd(oldPswd), encryptPswd(newPswd));
+	public boolean changePswd(int id, String oldPswd, String newPswd) {
+		return userDao.changePswd(id, oldPswd, newPswd);
 	}
 
 	@Override
-	public boolean restorePswd(String email, char[] pswd, char[] copyPswd) throws ServiceException {
-		if (!validatePswds(pswd, copyPswd)) {
-			throw new ServiceException("Passwords don't match");
-		}
-		return userDao.restorePswd(email, encryptPswd(pswd));
+	public boolean restorePswd(String email, String pswd, String copyPswd) {
+		return userDao.restorePswd(email, pswd);
 	}
 
 	@Override
@@ -50,30 +50,12 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
-	private String encryptPswd(char[] pswd) {
-		// temp stub for future implementation of sha1
-		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < pswd.length; i++) {
-			builder.append(pswd[i]);
+	private boolean emailExist(String email) {
+		User user = userDao.findByEmail(email);
+		if (user != null) {
+			return true;
 		}
-		System.out.println(pswd);
-		return builder.toString();
-	}
-
-	private boolean validatePswds(char[] pswd, char[] copyPswd) {
-		if (pswd.length != copyPswd.length) {
-			return false;
-		}
-		if (pswd.length <= 5) {
-			return false;
-		}
-		for (int i = 0; i < pswd.length; i++) {
-			if (pswd[i] != copyPswd[i]) {
-				return false;
-			}
-		}
-
-		return true;
+		return false;
 	}
 
 }

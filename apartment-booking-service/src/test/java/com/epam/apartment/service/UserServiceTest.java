@@ -1,11 +1,12 @@
 package com.epam.apartment.service;
 
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doThrow;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.mockito.ArgumentMatchers.*;
+
 import java.time.LocalDate;
 
 import org.mockito.InjectMocks;
@@ -17,9 +18,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.epam.apartment.dao.UserDao;
+import com.epam.apartment.dto.UserDto;
+import com.epam.apartment.exception.EmailExistsException;
 import com.epam.apartment.model.User;
 import com.epam.apartment.service.impl.UserServiceImpl;
-
 
 public class UserServiceTest {
 
@@ -29,70 +31,60 @@ public class UserServiceTest {
 	@InjectMocks
 	private UserServiceImpl userService;
 
+	private UserDto userDto = null;
 	private User user = null;
 	private String pswd = null;
 	private String copyPswd = null;
-	private String unmatchingPswd = null;
 	private String email = null;
 	private String wrongEmail = null;
 
 	@BeforeClass
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
+		userDto = getUserDto();
 		user = getUser();
 		pswd = "testpass12345";
 		copyPswd = "testpass12345";
-		unmatchingPswd = "anotherPswd12345";
 		email = "alesnax@gmail.com";
 		wrongEmail = "alesnax@gmail.com";
 	}
 
 	@Test
-	public void registerNewUserSuccessTest() throws ServiceException {
-		doNothing().when(userDao).registerNewUser(any(User.class), anyString());
-		userService.registerNewUser(user, pswd.toCharArray(), copyPswd.toCharArray());
-		verify(userDao, times(1)).registerNewUser(any(User.class), anyString());
+	public void registerNewUserSuccessTest() throws EmailExistsException {
+		when(userDao.registerNewUser(any(UserDto.class))).thenReturn(user);
+		User registeredUser = userService.registerNewUser(userDto);
+		verify(userDao, times(1)).registerNewUser(any(UserDto.class));
+		Assert.assertEquals(userService.registerNewUser(userDto), registeredUser);
 	}
 
-	@Test(expectedExceptions = ServiceException.class)
-	public void registerNewUserUnmatchingPswdsTest() throws ServiceException {
-		userService.registerNewUser(user, pswd.toCharArray(), unmatchingPswd.toCharArray());
-	}
-
-	@Test(expectedExceptions = DuplicateKeyException.class)
-	public void registerNewUserThrowDuplicatedKeyExceptionTest() throws ServiceException {
-		doThrow(DuplicateKeyException.class).when(userDao).registerNewUser(any(User.class), anyString());
-		userService.registerNewUser(user, pswd.toCharArray(), copyPswd.toCharArray());
-		verify(userDao, times(1)).registerNewUser(any(User.class), anyString());
+	@Test(expectedExceptions = EmailExistsException.class)
+	public void registerNewUserUnmatchingPswdsTest() throws EmailExistsException {
+		when(userDao.registerNewUser(any(UserDto.class))).thenThrow(EmailExistsException.class);
+		userService.registerNewUser(userDto);
 	}
 
 	@Test
 	public void authoriseUserSuccessTest() {
 		when(userDao.authoriseUser(email, pswd)).thenReturn(user);
-		Assert.assertEquals(userService.authoriseUser(email, pswd.toCharArray()), user);
+		Assert.assertEquals(userService.authoriseUser(email, pswd), user);
 	}
 
 	@Test
 	public void aithoriseUserUnexistedEmailTest() {
 		when(userDao.authoriseUser(anyString(), anyString())).thenReturn(null);
-		Assert.assertEquals(userService.authoriseUser(wrongEmail, pswd.toCharArray()), null);
+		Assert.assertEquals(userService.authoriseUser(wrongEmail, pswd), null);
 	}
 
 	@Test
 	public void changePswdSuccessTest() {
 		when(userDao.changePswd(anyInt(), anyString(), anyString())).thenReturn(true);
-		Assert.assertEquals(userService.changePswd(1, pswd.toCharArray(), copyPswd.toCharArray()), true);
+		Assert.assertEquals(userService.changePswd(1, pswd, copyPswd), true);
 	}
 
 	@Test
 	public void restorePswdMatchingPswdsTest() throws ServiceException {
 		when(userDao.restorePswd(anyString(), anyString())).thenReturn(true);
-		Assert.assertEquals(userService.restorePswd(email, pswd.toCharArray(), copyPswd.toCharArray()), true);
-	}
-
-	@Test(expectedExceptions = ServiceException.class)
-	public void restorePswdUnmatchingPswdsTest() throws ServiceException {
-		userService.restorePswd(email, pswd.toCharArray(), unmatchingPswd.toCharArray());
+		Assert.assertEquals(userService.restorePswd(email, pswd, copyPswd), true);
 	}
 
 	@Test
@@ -105,6 +97,15 @@ public class UserServiceTest {
 	public void editProfileDuplicatedKeyExceptionTest() {
 		when(userDao.editProfile(any(User.class))).thenThrow(DuplicateKeyException.class);
 		userService.editProfile(user);
+	}
+
+	private UserDto getUserDto() {
+		UserDto user = new UserDto();
+		user.setName("Ales");
+		user.setSurname("Nax");
+		user.setEmail("alesnax@gmail.com");
+		user.setBirthday(LocalDate.of(1991, 3, 13));
+		return user;
 	}
 
 	private User getUser() {

@@ -19,14 +19,16 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.apartment.dao.UserDao;
+import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.model.User;
 
-@Repository
+@Repository("userDao")
 @Scope(value = "singleton")
 public class JdbcUserDao implements UserDao {
 
 	private static final String INSERT_USER_SQL = "INSERT INTO USERS (U_EMAIL, U_NAME, U_SURNAME, U_PASSWORD, U_BIRTHDAY) VALUES (:p_EMAIL, :p_NAME, :p_SURNAME, :p_PSWD, :p_BIRTHDAY)";
 	private static final String SELECT_USER_BY_PSWD = "SELECT U_ID, U_EMAIL, U_NAME, U_SURNAME, U_BIRTHDAY FROM USERS WHERE U_EMAIL = :p_EMAIL AND U_PASSWORD = :p_PSWD";
+	private static final String SELECT_USER_BY_EMAIL = "SELECT U_ID, U_EMAIL, U_NAME, U_SURNAME, U_BIRTHDAY FROM USERS WHERE U_EMAIL = :p_EMAIL";
 	private static final String UPDATE_PASSWORD_BY_ID = "UPDATE USERS SET U_PASSWORD = :p_NEW_PSWD WHERE U_ID = :p_ID AND U_PASSWORD = :p_OLD_PSWD";
 	private static final String UPDATE_USER_BY_ID = "UPDATE USERS SET U_EMAIL = :email, U_NAME = :name, U_SURNAME = :surname WHERE U_ID = :id";
 	private static final String SELECT_USER_BY_ID = "SELECT U_ID, U_EMAIL, U_NAME, U_SURNAME, U_BIRTHDAY FROM USERS WHERE U_ID = :p_ID";
@@ -67,14 +69,16 @@ public class JdbcUserDao implements UserDao {
 		return user;
 	}
 
-	public void registerNewUser(User user, String pswd) {
-		Date bithday = user.getBirthday() != null ? Date.valueOf(user.getBirthday()) : null;
+	public User registerNewUser(UserDto accountDto) {
+		Date bithday = accountDto.getBirthday() != null ? Date.valueOf(accountDto.getBirthday()) : null;
 
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-		namedParameters.addValue(EMAIL_PARAM, user.getEmail()).addValue(NAME_PARAM, user.getName()).addValue(SURNAME_PARAM, user.getSurname()).addValue(PSWD_PARAM, pswd).addValue(BIRTHDAY_PARAM,
-				bithday);
+		namedParameters.addValue(EMAIL_PARAM, accountDto.getEmail()).addValue(NAME_PARAM, accountDto.getName()).addValue(SURNAME_PARAM, accountDto.getSurname())
+				.addValue(PSWD_PARAM, accountDto.getPassword()).addValue(BIRTHDAY_PARAM, bithday);
 
 		this.jdbcTemplate.update(INSERT_USER_SQL, namedParameters);
+		return authoriseUser(accountDto.getEmail(), accountDto.getPassword());
+
 	}
 
 	public boolean changePswd(int id, String oldPswd, String newPswd) {
@@ -120,6 +124,18 @@ public class JdbcUserDao implements UserDao {
 			}
 			return user;
 		}
+	}
+
+	@Override
+	public User findByEmail(String email) {
+		MapSqlParameterSource namedParameters = new MapSqlParameterSource().addValue(EMAIL_PARAM, email);
+		User user = null;
+		try {
+			user = this.jdbcTemplate.queryForObject(SELECT_USER_BY_EMAIL, namedParameters, new UserMapper());
+		} catch (EmptyResultDataAccessException e) {
+			user = null;
+		}
+		return user;
 	}
 
 }

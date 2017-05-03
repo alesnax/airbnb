@@ -15,6 +15,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.model.User;
 
 public class UserDaoTest extends DaoTest {
@@ -63,27 +64,29 @@ public class UserDaoTest extends DaoTest {
 
 	@Test
 	public void registerNewUserSuccessTest() {
-		User user = new User();
+		UserDto user = new UserDto();
 		user.setName("alex");
 		user.setSurname("nax");
 		user.setEmail("qnewemail@gmail.com");
-		String pswd = "ashftkla";
+		user.setPassword("ashftkla");
+		user.setMatchingPassword("ashftkla");
 
-		userDao.registerNewUser(user, pswd);
+		userDao.registerNewUser(user);
 		User authorisedUser = userDao.authoriseUser("qnewemail@gmail.com", "ashftkla");
 		Assert.assertEquals(authorisedUser.getEmail(), "qnewemail@gmail.com");
 	}
 
 	@Test(expectedExceptions = DuplicateKeyException.class)
 	public void registerNewUserWithSameEmailTest() {
-		User user = new User();
+		UserDto user = new UserDto();
 		user.setName("alex");
 		user.setSurname("nax");
 		user.setEmail("qnewemail@gmail.com");
-		String pswd = "ashftkla";
+		user.setPassword("ashftkla");
+		user.setMatchingPassword("ashftkla");
 
-		userDao.registerNewUser(user, pswd);
-		userDao.registerNewUser(user, pswd);
+		userDao.registerNewUser(user);
+		userDao.registerNewUser(user);
 	}
 
 	@Test

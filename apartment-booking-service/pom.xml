@@ -19,27 +19,62 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		
+
+		<!-- Artifact versions -->
+		<spring-framework.version>4.3.7.RELEASE</spring-framework.version>
 		<h2.version>1.4.193</h2.version>
 		<dbunit.version>2.5.0</dbunit.version>
 		<ojdbc7.version>12.1.0.2</ojdbc7.version>
 		<dbcp.version>1.4</dbcp.version>
+		<javax.validation.version>1.1.0.Final</javax.validation.version>
+		<hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
+		<passay.version>1.0</passay.version>
+		<guava.version>19.0</guava.version>
 	</properties>
 
 
 	<dependencies>
 
+		<!-- JDBC Artifacts -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>com.oracle.jdbc</groupId>
 			<artifactId>ojdbc7</artifactId>
 			<version>${ojdbc7.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>${dbcp.version}</version>
+		</dependency>
 
+		<!-- Validation artifacts -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${javax.validation.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.passay</groupId>
+			<artifactId>passay</artifactId>
+			<version>${passay.version}</version>
+		</dependency>
+
+		
+		<!-- Test database artifacts -->
 		<dependency>
 			<groupId>org.dbunit</groupId>
 			<artifactId>dbunit</artifactId>
 			<version>${dbunit.version}</version>
-			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
 
@@ -49,16 +84,14 @@
 			<version>${h2.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
+		<!-- Other artifacts -->
 		<dependency>
-			<groupId>commons-dbcp</groupId>
-			<artifactId>commons-dbcp</artifactId>
-			<version>${dbcp.version}</version>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
 		</dependency>
 		
-		
 	</dependencies>
-
-
 
 </project>

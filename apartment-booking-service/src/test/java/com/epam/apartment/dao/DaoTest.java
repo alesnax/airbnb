@@ -20,11 +20,11 @@ import com.epam.apartment.configuration.TestConfiguration;
 public abstract class DaoTest extends AbstractTestNGSpringContextTests {
 
 	@Autowired
-	DataSource dataSource;
+	DataSource testDataSource;
 
 	@BeforeMethod
 	public void setUp() throws Exception {
-		IDatabaseConnection dbConn = new DatabaseDataSourceConnection(dataSource);
+		IDatabaseConnection dbConn = new DatabaseDataSourceConnection(testDataSource);
 		DatabaseOperation.CLEAN_INSERT.execute(dbConn, getDataSet());
 	}
 

@@ -19,12 +19,13 @@ public class TestConfiguration {
 	private Environment environment;
 
 	@Bean
-	public DataSource dataSource() {
+	public DataSource testDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
 		dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
 		dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
 		dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
+
 		return dataSource;
 	}
 }

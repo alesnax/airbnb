@@ -1,0 +1,69 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.epam.apartment</groupId>
+		<artifactId>ApartmentsBooking</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>apartment-booking-web</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
+	<name>apartment-booking-web</name>
+	<description>web layer</description>
+
+
+	<properties>
+		<!-- Implementation without web.xml -->
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+
+		<!-- Artifacts versions -->
+		<apartment-booking-service.version>1.0</apartment-booking-service.version>
+
+		<spring-framework.version>4.3.7.RELEASE</spring-framework.version>
+		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+		<javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
+		<jstl.version>1.2</jstl.version>
+		
+	</properties>
+
+
+	<dependencies>
+		<!-- Service + DAO + Model Artifacts -->
+		<dependency>
+			<groupId>com.epam.apartment</groupId>
+			<artifactId>apartment-booking-service</artifactId>
+			<version>${apartment-booking-service.version}</version>
+		</dependency>
+	
+		<!-- Spring webmvc Artifacts -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+		<!-- Servlet Artifacts-->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>${javax.servlet.jsp-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+
+	</dependencies>
+
+</project>
