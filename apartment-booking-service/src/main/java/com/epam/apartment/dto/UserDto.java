@@ -9,29 +9,36 @@ import com.epam.apartment.validation.PasswordMatches;
 import com.epam.apartment.validation.ValidEmail;
 import com.epam.apartment.validation.ValidPassword;
 
-@PasswordMatches(message = "passwords don't match")
+@PasswordMatches(message = "{password.unmatching}")
 public class UserDto {
-	@NotNull(message = "empty value")
-	@Size(min = 5, max = 16, message = "name wrong length")
+
+	@NotNull(message = "{name.null}")
+	@Size(min = 2, max = 60, message = "{name.size}")
 	private String name;
 
-	@NotNull(message = "empty value")
-	@Size(min = 5, max = 25, message = "surname wrong length")
+	@NotNull(message = "{surname.null}")
+	@Size(min = 2, max = 60, message = "{surname.size}")
 	private String surname;
 
-	@ValidPassword
-	private String password;
+	@NotNull(message = "{password.null}")
+	@Size(min = 8, max = 40, message = "{password.size}")
+	@ValidPassword(message = "{password.rule}")
+	private transient String password;
 
-	@NotNull(message = "empty value")
-	@Size(min = 1)
-	private String matchingPassword;
+	@NotNull(message = "{password.null}")
+	@Size(min = 8, max = 40, message = "{password.size}")
+	private transient String matchingPassword;
 
-	@ValidEmail()
-	@NotNull(message = "empty value")
-	@Size(min = 5)
+	@ValidEmail(message = "{email.rule}")
+	@NotNull(message = "{email.null}")
+	@Size(min = 2, max = 60, message = "{email.size}")
 	private String email;
 
 	private LocalDate birthday;
+
+	public UserDto() {
+
+	}
 
 	public String getEmail() {
 		return email;

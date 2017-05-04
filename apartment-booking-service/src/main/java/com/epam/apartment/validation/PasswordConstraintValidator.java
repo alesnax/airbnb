@@ -25,7 +25,14 @@ public class PasswordConstraintValidator implements ConstraintValidator<ValidPas
 
 	@Override
 	public boolean isValid(final String password, final ConstraintValidatorContext context) {
-		final PasswordValidator validator = new PasswordValidator(
+		/*
+		 * Properties props = new Properties(); try { props.load(new
+		 * FileInputStream("classpath:/i18n/messages.properties")); } catch
+		 * (IOException e) { // TODO Auto-generated catch block // logging
+		 * e.printStackTrace(); } MessageResolver resolver = new
+		 * PropertiesMessageResolver(props);
+		 */
+		final PasswordValidator validator = new PasswordValidator(/* resolver, */
 				Arrays.asList(new LengthRule(8, 30), new UppercaseCharacterRule(1), new DigitCharacterRule(1), new SpecialCharacterRule(1), new WhitespaceRule()));
 		final RuleResult result = validator.validate(new PasswordData(password));
 		if (result.isValid()) {

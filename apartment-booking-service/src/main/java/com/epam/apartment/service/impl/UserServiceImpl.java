@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.apartment.dao.UserDao;
+import com.epam.apartment.dto.LoginDto;
 import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.exception.EmailExistsException;
 import com.epam.apartment.model.User;
@@ -29,9 +30,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User authoriseUser(String email, String pswd) {
-		User user = userDao.authoriseUser(email, pswd);
-		return user;
+	public User authoriseUser(LoginDto loginDto) {
+		return userDao.authoriseUser(loginDto.getEmail(), loginDto.getPassword());
 	}
 
 	@Override

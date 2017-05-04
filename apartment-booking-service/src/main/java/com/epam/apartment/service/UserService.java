@@ -1,5 +1,6 @@
 package com.epam.apartment.service;
 
+import com.epam.apartment.dto.LoginDto;
 import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.exception.EmailExistsException;
 import com.epam.apartment.model.User;
@@ -8,7 +9,7 @@ public interface UserService {
 
 	User registerNewUser(UserDto user) throws EmailExistsException;;
 
-	User authoriseUser(String email, String pswd);
+	User authoriseUser(LoginDto loginDto);
 
 	boolean changePswd(int id, String oldPswd, String newPswd);
 

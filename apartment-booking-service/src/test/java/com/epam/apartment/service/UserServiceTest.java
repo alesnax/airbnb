@@ -18,6 +18,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.epam.apartment.dao.UserDao;
+import com.epam.apartment.dto.LoginDto;
 import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.exception.EmailExistsException;
 import com.epam.apartment.model.User;
@@ -33,6 +34,7 @@ public class UserServiceTest {
 
 	private UserDto userDto = null;
 	private User user = null;
+	private LoginDto loginDto = null;
 	private String pswd = null;
 	private String copyPswd = null;
 	private String email = null;
@@ -43,6 +45,7 @@ public class UserServiceTest {
 		MockitoAnnotations.initMocks(this);
 		userDto = getUserDto();
 		user = getUser();
+		loginDto = getLoginDto();
 		pswd = "testpass12345";
 		copyPswd = "testpass12345";
 		email = "alesnax@gmail.com";
@@ -65,14 +68,14 @@ public class UserServiceTest {
 
 	@Test
 	public void authoriseUserSuccessTest() {
-		when(userDao.authoriseUser(email, pswd)).thenReturn(user);
-		Assert.assertEquals(userService.authoriseUser(email, pswd), user);
+		when(userDao.authoriseUser(anyString(), anyString())).thenReturn(user);
+		Assert.assertEquals(userService.authoriseUser(loginDto), user);
 	}
 
 	@Test
 	public void aithoriseUserUnexistedEmailTest() {
 		when(userDao.authoriseUser(anyString(), anyString())).thenReturn(null);
-		Assert.assertEquals(userService.authoriseUser(wrongEmail, pswd), null);
+		Assert.assertEquals(userService.authoriseUser(loginDto), null);
 	}
 
 	@Test
@@ -116,6 +119,13 @@ public class UserServiceTest {
 		user.setEmail("alesnax@gmail.com");
 		user.setBirthday(LocalDate.of(1991, 3, 13));
 		return user;
+	}
+
+	private LoginDto getLoginDto() {
+		LoginDto loginDto = new LoginDto();
+		loginDto.setEmail("newalesnax@gmail.com");
+		loginDto.setPassword("12345678N&asd");
+		return loginDto;
 	}
 
 }
