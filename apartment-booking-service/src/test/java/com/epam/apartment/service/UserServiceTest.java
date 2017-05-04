@@ -12,12 +12,12 @@ import java.time.LocalDate;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.dao.DuplicateKeyException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.epam.apartment.dao.UserDao;
+import com.epam.apartment.dto.EditedUserDto;
 import com.epam.apartment.dto.LoginDto;
 import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.exception.EmailExistsException;
@@ -91,15 +91,15 @@ public class UserServiceTest {
 	}
 
 	@Test
-	public void editProfileSuccessTest() {
-		when(userDao.editProfile(any(User.class))).thenReturn(user);
-		Assert.assertEquals(userService.editProfile(user), user);
+	public void editProfileSuccessTest() throws EmailExistsException {
+		when(userDao.editProfile(any(EditedUserDto.class))).thenReturn(user);
+		Assert.assertEquals(userService.editProfile(new EditedUserDto()), user);
 	}
 
-	@Test(expectedExceptions = DuplicateKeyException.class)
-	public void editProfileDuplicatedKeyExceptionTest() {
-		when(userDao.editProfile(any(User.class))).thenThrow(DuplicateKeyException.class);
-		userService.editProfile(user);
+	@Test(expectedExceptions = EmailExistsException.class)
+	public void editProfileDuplicatedKeyExceptionTest() throws EmailExistsException {
+		when(userDao.editProfile(any(EditedUserDto.class))).thenThrow(EmailExistsException.class);
+		userService.editProfile(new EditedUserDto());
 	}
 
 	private UserDto getUserDto() {

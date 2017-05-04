@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.apartment.dao.UserDao;
+import com.epam.apartment.dto.EditedUserDto;
 import com.epam.apartment.dto.LoginDto;
 import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.exception.EmailExistsException;
@@ -44,10 +45,13 @@ public class UserServiceImpl implements UserService {
 		return userDao.restorePswd(email, pswd);
 	}
 
+	@Transactional
 	@Override
-	public User editProfile(User editedUser) {
-		User user = userDao.editProfile(editedUser);
-		return user;
+	public User editProfile(EditedUserDto editedUser) throws EmailExistsException {
+		if (emailExist(editedUser.getEmail())) {
+			throw new EmailExistsException("There is an account with that email address: " + editedUser.getEmail());
+		}
+		return userDao.editProfile(editedUser);
 	}
 
 	private boolean emailExist(String email) {

@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.apartment.dao.UserDao;
+import com.epam.apartment.dto.EditedUserDto;
 import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.model.User;
 
@@ -103,7 +104,7 @@ public class JdbcUserDao implements UserDao {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public User editProfile(User editedUser) {
+	public User editProfile(EditedUserDto editedUser) {
 		SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(editedUser);
 		MapSqlParameterSource idNamedParameters = new MapSqlParameterSource(ID_PARAM, editedUser.getId());
 		this.jdbcTemplate.update(UPDATE_USER_BY_ID, namedParameters);

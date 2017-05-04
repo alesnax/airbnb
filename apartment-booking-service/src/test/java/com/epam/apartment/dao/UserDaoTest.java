@@ -15,6 +15,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.epam.apartment.dto.EditedUserDto;
 import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.model.User;
 
@@ -109,7 +110,7 @@ public class UserDaoTest extends DaoTest {
 
 	@Test
 	public void editProfileSuccessTest() {
-		User user = new User();
+		EditedUserDto user = new EditedUserDto();
 		user.setId(1);
 		user.setName("alex");
 		user.setSurname("nax");
@@ -121,7 +122,7 @@ public class UserDaoTest extends DaoTest {
 
 	@Test(expectedExceptions = DuplicateKeyException.class)
 	public void editProfileThrowsDuplicatedKeyExceptionTest() {
-		User user = new User();
+		EditedUserDto user = new EditedUserDto();
 		user.setId(3);
 		user.setName("alex");
 		user.setSurname("nax");
