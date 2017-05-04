@@ -30,15 +30,14 @@
                 <input class="search_submit" type="submit" value="${s_submit_v}"/>
             </form>
         </div> --%>
-       <%--  <c:if test="${not empty sessionScope.user}">
+      <c:if test="${not empty sessionScope.user}">
             <div class="fl_r h_links">
-                <fmt:message bundle="${config}" key="command.log_out" var="log_out_command"/>
-                <a class="h_link" href=${log_out_command}>
-                    <fmt:message bundle="${loc}" key="common.log_out_text"/>
+                <a class="h_link" href="/user/logout">
+                    <spring:message code="common.log_out_text"/>
                 </a>
             </div>
-        </c:if> --%>
-       <%--  <c:if test="${empty sessionScope.user}"> --%>
+        </c:if> 
+        <c:if test="${empty sessionScope.user}"> 
             <div class="fl_r lang_links">
                
                 <a class="lang_link" href="?lang=en">
@@ -67,7 +66,7 @@
                     <spring:message code="common.sign_in_text"/>
                 </a>
             </div>
-       <%--  </c:if> --%>
+      </c:if> 
         
         </div>
     </div>

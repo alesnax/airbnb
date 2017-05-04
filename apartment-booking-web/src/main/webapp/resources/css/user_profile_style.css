@@ -1,0 +1,242 @@
+body {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #333;
+    background-color: #F5F8FA;
+    margin: 0;
+    padding: 0;
+}
+
+.page_layout {
+    padding: 50px 15px 0;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+div {
+    position: relative;
+}
+
+section {
+    width: 780px;
+    float: right;
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.fl_l {
+    float: left;
+}
+
+.fl_r {
+    float: right;
+}
+
+.page_block {
+    position: relative;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    margin: 15px 0 0;
+    padding: 20px 15px;
+}
+
+.photo_block {
+    float: left;
+    width: 200px;
+    margin: 15px 15px 0 0;
+}
+
+.top_block {
+    position: relative;
+}
+
+.wide_block {
+    position: relative;
+    float: left;
+}
+
+.short_info_block {
+    width: 500px;
+    height: 253px;
+    float: left;
+}
+
+.content {
+    width: 980px;
+    margin: 0 auto;
+}
+
+a {
+    color: #42648b;
+    text-decoration: none;
+}
+
+.avatar {
+    width: 200px;
+    border-radius: 4px;
+}
+
+.profile_edit {
+    margin-top: 10px;
+    width: 200px;
+    height: 40px;
+    background-color: #e2f0f9;
+    float: left;
+    border-radius: 4px;
+}
+
+.profile_edit:hover {
+    transition-delay: 0.2s;
+    background-color: #b4e3f5;
+}
+
+.profile_edit_act, .following_text {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 7px;
+    padding: 7px 3px 8px;
+    vertical-align: top;
+    line-height: 15px;
+    text-align: center;
+    color: #405a73;
+    font-size: 15px;
+}
+
+.profile_edit_act:active {
+    padding: 9px 3px 6px;
+}
+
+.profile_edit_act:hover {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 5px 0 10px;
+    color: #0b4884;
+}
+
+h3 {
+    font-size: 18px;
+    margin: 0;
+    color: #0b4884;
+    text-align: center;
+}
+
+.info_label {
+    width: 150px;
+    height: 25px;
+    text-align: left;
+    color: #828282;
+}
+
+.profile_name {
+    border-bottom: 1px solid #e7e8ec;
+}
+
+.short_info {
+    border-bottom: 1px solid #e7e8ec;
+    min-height: 150px;
+}
+
+.page_counter {
+    display: inline-block;
+    padding: 15px;
+}
+
+.counts_module {
+    text-align: center;
+}
+
+.count {
+    font-size: 19px;
+    color: #42648b;
+    padding-bottom: 3px;
+    line-height: 21px;
+}
+
+.label {
+    color: #42648b;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.wrong_message_block {
+    width: 745px;
+    background-color: #ffc9c9;
+    position: relative;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    margin: 15px 0 0;
+    padding: 20px 15px;
+}
+
+.error_msg {
+    text-align: center;
+    color: #405a73;
+    font-size: 16px;
+    padding: 0 15px 0;
+    font-weight: 600;
+}
+
+.follow_button{
+    margin-top: 10px;
+    width: 200px;
+    height: 40px;
+    background-color: #e2f0f9;
+    float: left;
+    border-radius: 4px;
+    border-width: 0;
+    vertical-align: top;
+    line-height: 15px;
+    text-align: center;
+    color: #405a73;
+    font-size: 15px;
+}
+
+.follow_button:hover{
+     background-color: #b4e3f5;
+ }
+
+
+.remove_submit_button{
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: #f0f7fb;
+    border-radius: 4px;
+    border-width: 0;
+}
+
+.following_block{
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 150px;
+    height: 40px;
+    background-color: #e2f0f9;
+    float: left;
+    border-radius: 4px;
+}
+
+.following_text{
+
+}
+
+.double_block{
+    height: 50px;
+}
+
+.icon_cross_remove{
+    width: 20px;
+    height: 20px;
+    background-position: -392px -180px;
+    padding-right: 10px;
+
+}
+

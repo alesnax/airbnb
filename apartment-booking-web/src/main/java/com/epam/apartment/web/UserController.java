@@ -1,6 +1,6 @@
 package com.epam.apartment.web;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +11,11 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.epam.apartment.dto.LoginDto;
 import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.exception.EmailExistsException;
 import com.epam.apartment.model.User;
-import com.epam.apartment.service.ServiceException;
 import com.epam.apartment.service.UserService;
 
 @Controller
@@ -28,44 +26,68 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String showAuthorisationForm() {
-
+	public String showAuthorisationForm(final Model model) {
+		final LoginDto loginDto = new LoginDto();
+		model.addAttribute("loginDto", loginDto);
 		return "login";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String processAuthorisation(String email, String pswd) {
-		User user = userService.authoriseUser(email, pswd);
-		return null;
+	public String processAuthorisation(@ModelAttribute("loginDto") @Valid final LoginDto loginDto, BindingResult result, Errors errors, HttpSession session) {
+		User authorisated = null;
+		if (result.hasErrors()) {
+			return "login";
+		} else {
+			authorisated = userService.authoriseUser(loginDto);
+		}
+
+		if (authorisated == null) {
+			result.rejectValue("password", "login.wrong_pass_or_email");
+		}
+		if (result.hasErrors()) {
+			return "login";
+		} else {
+			session.setAttribute("user", authorisated);
+			return "redirect:/user/profile";
+		}
 	}
 
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
-	public String showRegistrationForm(final HttpServletRequest request, final Model model) {
-		// LOGGER.debug("Rendering registration page.");
+	public String showRegistrationForm(final Model model) {
 		final UserDto accountDto = new UserDto();
-		model.addAttribute("user", accountDto);
+		model.addAttribute("account", accountDto);
 		return "registration";
 	}
 
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserDto accountDto, BindingResult result, WebRequest request, Errors errors) throws ServiceException {
-
+	public String registerUserAccount(@ModelAttribute("account") @Valid final UserDto accountDto, BindingResult result, Errors errors, HttpSession session) {
+		User registered = null;
 		if (result.hasErrors()) {
-			return new ModelAndView("registration"/* , "user", accountDto */);
-		}
-
-		User registered = new User();
-		if (!result.hasErrors()) {
+			return "registration";
+		} else {
 			registered = createUserAccount(accountDto, result);
 		}
+
 		if (registered == null) {
-			result.rejectValue("email", "message.regError");
+			result.rejectValue("email", "email.email_exists");
 		}
 		if (result.hasErrors()) {
-			return new ModelAndView("registration", "user", accountDto);
+			return "registration";
 		} else {
-			return new ModelAndView("successRegister", "user", accountDto);
+			session.setAttribute("user", registered);
+			return "redirect:/user/profile";
 		}
+	}
+
+	@RequestMapping(value = "/profile")
+	public String showUserProfile() {
+		return "profile";
+	}
+
+	@RequestMapping(value = "/logout")
+	public String logOut(HttpSession session) {
+		session.invalidate();
+		return "welcome";
 	}
 
 	private User createUserAccount(UserDto accountDto, BindingResult result) {
