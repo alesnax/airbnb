@@ -15,8 +15,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.epam.apartment.dto.EditedUserDto;
-import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.model.User;
 
 public class UserDaoTest extends DaoTest {
@@ -65,29 +63,27 @@ public class UserDaoTest extends DaoTest {
 
 	@Test
 	public void registerNewUserSuccessTest() {
-		UserDto user = new UserDto();
+		String password = "asfjklhh@89F";
+		User user = new User();
 		user.setName("alex");
 		user.setSurname("nax");
 		user.setEmail("qnewemail@gmail.com");
-		user.setPassword("ashftkla");
-		user.setMatchingPassword("ashftkla");
 
-		userDao.registerNewUser(user);
-		User authorisedUser = userDao.authoriseUser("qnewemail@gmail.com", "ashftkla");
+		userDao.registerNewUser(user, password);
+		User authorisedUser = userDao.authoriseUser("qnewemail@gmail.com", password);
 		Assert.assertEquals(authorisedUser.getEmail(), "qnewemail@gmail.com");
 	}
 
 	@Test(expectedExceptions = DuplicateKeyException.class)
 	public void registerNewUserWithSameEmailTest() {
-		UserDto user = new UserDto();
+		User user = new User();
 		user.setName("alex");
 		user.setSurname("nax");
 		user.setEmail("qnewemail@gmail.com");
-		user.setPassword("ashftkla");
-		user.setMatchingPassword("ashftkla");
+		String password = "asfjklhh@89F";
 
-		userDao.registerNewUser(user);
-		userDao.registerNewUser(user);
+		userDao.registerNewUser(user, password);
+		userDao.registerNewUser(user, password);
 	}
 
 	@Test
@@ -110,7 +106,7 @@ public class UserDaoTest extends DaoTest {
 
 	@Test
 	public void editProfileSuccessTest() {
-		EditedUserDto user = new EditedUserDto();
+		User user = new User();
 		user.setId(1);
 		user.setName("alex");
 		user.setSurname("nax");
@@ -122,7 +118,7 @@ public class UserDaoTest extends DaoTest {
 
 	@Test(expectedExceptions = DuplicateKeyException.class)
 	public void editProfileThrowsDuplicatedKeyExceptionTest() {
-		EditedUserDto user = new EditedUserDto();
+		User user = new User();
 		user.setId(3);
 		user.setName("alex");
 		user.setSurname("nax");

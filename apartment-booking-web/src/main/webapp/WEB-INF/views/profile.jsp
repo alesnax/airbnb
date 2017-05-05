@@ -28,7 +28,7 @@
                             <img class="avatar" src="<c:url value="/resources/img/no_avatar.jpg" />" alt="no_photo" onerror="src='/resources/img/no_avatar.jpg'">
                         </div>
                              <div class="profile_edit">
-                                    <a class="profile_edit_act" href="/user/edit_profile">
+                                    <a class="profile_edit_act" href="/user/edit">
                                         <spring:message code="profile.edit_profile_text"/>
                                     </a>
                              </div>

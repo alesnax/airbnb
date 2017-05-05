@@ -1,12 +1,10 @@
 package com.epam.apartment.dao;
 
-import com.epam.apartment.dto.EditedUserDto;
-import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.model.User;
 
 public interface UserDao {
 
-	User registerNewUser(UserDto accountDto);
+	User registerNewUser(User user, String password);
 
 	User authoriseUser(String email, String pswd);
 
@@ -14,7 +12,7 @@ public interface UserDao {
 
 	boolean restorePswd(String email, String newPswd);
 
-	User editProfile(EditedUserDto editedUser);
+	User editProfile(User user);
 
 	User findByEmail(String email);
 }

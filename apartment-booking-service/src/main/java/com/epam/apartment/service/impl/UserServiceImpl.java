@@ -2,12 +2,12 @@ package com.epam.apartment.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.apartment.dao.UserDao;
 import com.epam.apartment.dto.EditedUserDto;
-import com.epam.apartment.dto.LoginDto;
 import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.exception.EmailExistsException;
 import com.epam.apartment.model.User;
@@ -27,12 +27,18 @@ public class UserServiceImpl implements UserService {
 		if (emailExist(accountDto.getEmail())) {
 			throw new EmailExistsException("There is an account with that email address: " + accountDto.getEmail());
 		}
-		return userDao.registerNewUser(accountDto);
+		User user = new User();
+		user.setName(accountDto.getName());
+		user.setSurname(accountDto.getSurname());
+		user.setEmail(accountDto.getEmail());
+		user.setBirthday(accountDto.getBirthday());
+
+		return userDao.registerNewUser(user, accountDto.getPassword());
 	}
 
 	@Override
-	public User authoriseUser(LoginDto loginDto) {
-		return userDao.authoriseUser(loginDto.getEmail(), loginDto.getPassword());
+	public User authoriseUser(String email, String password) {
+		return userDao.authoriseUser(email, password);
 	}
 
 	@Override
@@ -48,10 +54,18 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	@Override
 	public User editProfile(EditedUserDto editedUser) throws EmailExistsException {
-		if (emailExist(editedUser.getEmail())) {
+		User updatedUser = null;
+		User user = new User();
+		user.setName(editedUser.getName());
+		user.setSurname(editedUser.getSurname());
+		user.setEmail(editedUser.getEmail());
+		user.setBirthday(editedUser.getBirthday());
+		try {
+			updatedUser = userDao.editProfile(user);
+		} catch (DuplicateKeyException e) {
 			throw new EmailExistsException("There is an account with that email address: " + editedUser.getEmail());
 		}
-		return userDao.editProfile(editedUser);
+		return updatedUser;
 	}
 
 	private boolean emailExist(String email) {

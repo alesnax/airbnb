@@ -3,8 +3,6 @@ package com.epam.apartment.service;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
@@ -52,30 +50,24 @@ public class UserServiceTest {
 		wrongEmail = "alesnax@gmail.com";
 	}
 
-	@Test
-	public void registerNewUserSuccessTest() throws EmailExistsException {
-		when(userDao.registerNewUser(any(UserDto.class))).thenReturn(user);
-		User registeredUser = userService.registerNewUser(userDto);
-		verify(userDao, times(1)).registerNewUser(any(UserDto.class));
-		Assert.assertEquals(userService.registerNewUser(userDto), registeredUser);
-	}
-
-	@Test(expectedExceptions = EmailExistsException.class)
-	public void registerNewUserUnmatchingPswdsTest() throws EmailExistsException {
-		when(userDao.registerNewUser(any(UserDto.class))).thenThrow(EmailExistsException.class);
-		userService.registerNewUser(userDto);
-	}
+	/*
+	 * @Test public void registerNewUserSuccessTest() throws
+	 * EmailExistsException { when(userDao.registerNewUser(user,
+	 * pswd)).thenReturn(user); User returnedUser =
+	 * userService.registerNewUser(userDto); Assert.assertEquals(returnedUser,
+	 * user); }
+	 */
 
 	@Test
 	public void authoriseUserSuccessTest() {
 		when(userDao.authoriseUser(anyString(), anyString())).thenReturn(user);
-		Assert.assertEquals(userService.authoriseUser(loginDto), user);
+		Assert.assertEquals(userService.authoriseUser(email, pswd), user);
 	}
 
 	@Test
 	public void aithoriseUserUnexistedEmailTest() {
 		when(userDao.authoriseUser(anyString(), anyString())).thenReturn(null);
-		Assert.assertEquals(userService.authoriseUser(loginDto), null);
+		Assert.assertEquals(userService.authoriseUser(email, pswd), null);
 	}
 
 	@Test
@@ -92,13 +84,13 @@ public class UserServiceTest {
 
 	@Test
 	public void editProfileSuccessTest() throws EmailExistsException {
-		when(userDao.editProfile(any(EditedUserDto.class))).thenReturn(user);
+		when(userDao.editProfile(any(User.class))).thenReturn(user);
 		Assert.assertEquals(userService.editProfile(new EditedUserDto()), user);
 	}
 
 	@Test(expectedExceptions = EmailExistsException.class)
 	public void editProfileDuplicatedKeyExceptionTest() throws EmailExistsException {
-		when(userDao.editProfile(any(EditedUserDto.class))).thenThrow(EmailExistsException.class);
+		when(userDao.editProfile(any(User.class))).thenThrow(EmailExistsException.class);
 		userService.editProfile(new EditedUserDto());
 	}
 

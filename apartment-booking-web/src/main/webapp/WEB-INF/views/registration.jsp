@@ -62,15 +62,17 @@
 		<spring:message code="registration.user.password" />
 		<form:input path="password" type="password" />
 		<br />
-		<form:errors path="password" class="errormsg"/>
+		<form:errors path="password" class="errormsg" />
 		<br />
 
 		<spring:message code="registration.user.matching_password" />
 		<form:input path="matchingPassword" type="password" />
 		<br />
 		<form:errors path="matchingPassword" class="errormsg" />
+		<br/>
+		<form:errors class="errormsg" />
 		<br />
-
+		
 		<input type="submit"
 			value="<spring:message code="registration.user.register"/>" />
 	</form:form>

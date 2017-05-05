@@ -19,8 +19,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.apartment.dao.UserDao;
-import com.epam.apartment.dto.EditedUserDto;
-import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.model.User;
 
 @Repository("userDao")
@@ -70,15 +68,15 @@ public class JdbcUserDao implements UserDao {
 		return user;
 	}
 
-	public User registerNewUser(UserDto accountDto) {
-		Date bithday = accountDto.getBirthday() != null ? Date.valueOf(accountDto.getBirthday()) : null;
+	public User registerNewUser(User user, String password) {
+		Date bithday = user.getBirthday() != null ? Date.valueOf(user.getBirthday()) : null;
 
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-		namedParameters.addValue(EMAIL_PARAM, accountDto.getEmail()).addValue(NAME_PARAM, accountDto.getName()).addValue(SURNAME_PARAM, accountDto.getSurname())
-				.addValue(PSWD_PARAM, accountDto.getPassword()).addValue(BIRTHDAY_PARAM, bithday);
+		namedParameters.addValue(EMAIL_PARAM, user.getEmail()).addValue(NAME_PARAM, user.getName()).addValue(SURNAME_PARAM, user.getSurname()).addValue(PSWD_PARAM, password).addValue(BIRTHDAY_PARAM,
+				bithday);
 
 		this.jdbcTemplate.update(INSERT_USER_SQL, namedParameters);
-		return authoriseUser(accountDto.getEmail(), accountDto.getPassword());
+		return authoriseUser(user.getEmail(), password);
 
 	}
 
@@ -104,9 +102,9 @@ public class JdbcUserDao implements UserDao {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public User editProfile(EditedUserDto editedUser) {
-		SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(editedUser);
-		MapSqlParameterSource idNamedParameters = new MapSqlParameterSource(ID_PARAM, editedUser.getId());
+	public User editProfile(User user) {
+		SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(user);
+		MapSqlParameterSource idNamedParameters = new MapSqlParameterSource(ID_PARAM, user.getId());
 		this.jdbcTemplate.update(UPDATE_USER_BY_ID, namedParameters);
 
 		return this.jdbcTemplate.queryForObject(SELECT_USER_BY_ID, idNamedParameters, new UserMapper());

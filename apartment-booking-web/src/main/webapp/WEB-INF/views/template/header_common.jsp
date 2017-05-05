@@ -18,7 +18,7 @@
         <div class="fl_l ">
             
             <a href="/">
-               <%--  <img class="header_logo" src="${main_logo}" alt="Q&A logo"/> --%>
+               <img class="header_logo" src="<c:url value="/resources/img/logo.png" />" alt="Q&A logo"/>
             </a>
         </div>
        <%--  <spring:message code="common.header.search_form.placeholder" var="s_form_ph"/>
