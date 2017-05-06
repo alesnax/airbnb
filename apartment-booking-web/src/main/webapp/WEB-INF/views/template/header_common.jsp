@@ -21,15 +21,14 @@
                <img class="header_logo" src="<c:url value="/resources/img/logo.png" />" alt="Q&A logo"/>
             </a>
         </div>
-       <%--  <spring:message code="common.header.search_form.placeholder" var="s_form_ph"/>
-        <spring:message code="common.header.search_form.submit_value" var="s_submit_v"/> --%>
-        <%-- <div class="fl_l search_block">
-            <form class="search_form" action="/Controller" method="get">
-                <input type="hidden" name="command" value="search_posts"/>
-                <input class="s_back_img search_input" name="content" value="${requestScope.search_query}" type="text" placeholder="${s_form_ph}"/>
+       <spring:message code="common.header.search_form.placeholder" var="s_form_ph"/>
+        <spring:message code="common.header.search_form.submit_value" var="s_submit_v"/>
+      <div class="fl_l search_block">
+            <form class="search_form" action="/apartment/search_by_name" method="get">
+                <input class="s_back_img search_input" name="apartment_name" value="" type="text" placeholder="${s_form_ph}"/>
                 <input class="search_submit" type="submit" value="${s_submit_v}"/>
             </form>
-        </div> --%>
+        </div>
       <c:if test="${not empty sessionScope.user}">
             <div class="fl_r h_links">
                 <a class="h_link" href="/user/logout">

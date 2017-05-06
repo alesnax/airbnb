@@ -11,6 +11,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.epam.apartment.dto.ChangePasswordDto;
 import com.epam.apartment.dto.EditedUserDto;
@@ -22,6 +24,7 @@ import com.epam.apartment.service.UserService;
 
 @Controller
 @RequestMapping(value = "/user")
+@SessionAttributes("user")
 public class UserController {
 
 	@Autowired
@@ -50,21 +53,22 @@ public class UserController {
 	 * @return login page or redirecting to user profile
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String processAuthorisation(@ModelAttribute("loginDto") @Valid final LoginDto loginDto, BindingResult result, Errors errors, HttpSession session) {
-		User authorisated = null;
+	public String processAuthorisation(@ModelAttribute("loginDto") @Valid final LoginDto loginDto, BindingResult result, Errors errors, Model model) {
+		User user = null;
 		if (result.hasErrors()) {
 			return "login";
 		} else {
-			authorisated = userService.authoriseUser(loginDto.getEmail(), loginDto.getPassword());
+			user = userService.authoriseUser(loginDto.getEmail(), loginDto.getPassword());
 		}
 
-		if (authorisated == null) {
+		if (user == null) {
 			result.rejectValue("password", "login.wrong_pass_or_email");
 		}
 		if (result.hasErrors()) {
 			return "login";
 		} else {
-			session.setAttribute("user", authorisated);
+			model.addAttribute(user);
+			// session.setAttribute("user", authorisated);
 			return "redirect:/user/profile";
 		}
 	}
@@ -92,21 +96,22 @@ public class UserController {
 	 * @return registration page or redirecting to user profile
 	 */
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public String registerUserAccount(@ModelAttribute("account") @Valid final UserDto accountDto, BindingResult result, Errors errors, HttpSession session) {
-		User registered = null;
+	public String registerUserAccount(@ModelAttribute("account") @Valid final UserDto accountDto, BindingResult result, Errors errors, Model model) {
+		User user = null;
 		if (result.hasErrors()) {
 			return "registration";
 		} else {
-			registered = createUserAccount(accountDto, result);
+			user = createUserAccount(accountDto, result);
 		}
 
-		if (registered == null) {
+		if (user == null) {
 			result.rejectValue("email", "email.email_exists");
 		}
 		if (result.hasErrors()) {
 			return "registration";
 		} else {
-			session.setAttribute("user", registered);
+			model.addAttribute(user);
+			// session.setAttribute("user", user);
 			return "redirect:/user/profile";
 		}
 	}
@@ -144,7 +149,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public String processEditProfile(@ModelAttribute("editedUser") @Valid final EditedUserDto editedUser, BindingResult result, Errors errors, HttpSession session) {
+	public String processEditProfile(@ModelAttribute("editedUser") @Valid final EditedUserDto editedUser, BindingResult result, Errors errors, Model model) {
 		User user = null;
 		if (result.hasErrors()) {
 			return "edit_profile";
@@ -157,7 +162,8 @@ public class UserController {
 		if (result.hasErrors()) {
 			return "edit_profile";
 		} else {
-			session.setAttribute("user", editedUser);
+			model.addAttribute(user);
+			// session.setAttribute("user", user);
 			return "redirect:/user/edit";
 		}
 	}
@@ -210,8 +216,8 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/logout")
-	public String logOut(HttpSession session) {
-		session.invalidate();
+	public String logOut(SessionStatus status) {
+		status.setComplete();
 		return "redirect:/";
 	}
 

@@ -56,6 +56,7 @@ public class UserServiceImpl implements UserService {
 	public User editProfile(EditedUserDto editedUser) throws EmailExistsException {
 		User updatedUser = null;
 		User user = new User();
+		user.setId(editedUser.getId());
 		user.setName(editedUser.getName());
 		user.setSurname(editedUser.getSurname());
 		user.setEmail(editedUser.getEmail());

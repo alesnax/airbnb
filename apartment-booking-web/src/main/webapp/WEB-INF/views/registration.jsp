@@ -35,47 +35,74 @@
 	</header>
 
 
-	registration
-	<hr />
-	<!-- <a href="/user/registration?lang=en">English </a> |
-	<a href="/user/registration?lang=ru">Russian</a> -->
-	<hr />
-	<form:form method="POST" modelAttribute="account">
-		<spring:message code="registration.user.name" />
-		<form:input path="name" />
-		<br />
-		<form:errors path="name" class="errormsg" />
-		<br />
+	<div class="page_layout">
+		<div class="content">
+			<section>
+				<div class="validation_block ">
+					<div class="create_account_form_block page_block">
+					
+					
+						<form:form method="POST" modelAttribute="account"
+							class="create_account_form">
+					
+							<div class="form_element login">
+								<label> 
+								<strong>  <spring:message code="registration.user.name" /> <span class="notice_star">*</span> </strong> 
+								<form:input path="name" />
+								</label> 
+								<span class="errormsg"> <form:errors path="name" class="errormsg" /></span>
+							</div>
+					
+							<div class="form_element login">
+								<label> 
+								<strong> <spring:message code="registration.user.surname" /> <span class="notice_star">*</span> </strong> 
+								<form:input path="surname" />
+								</label> 
+								<span class="errormsg"> <form:errors path="surname" class="errormsg" /></span>
+							</div>
+					
+							
+							<div class="form_element login">
+								<label> 
+								<strong>  <spring:message code="registration.user.email" /> <span class="notice_star">*</span> </strong> 
+								<form:input path="email" type="email" />
+								</label> 
+								<span class="errormsg"> <form:errors path="email" class="errormsg" /></span>
+							</div>
+					
+						
+							<div class="form_element login">
+								<label> 
+								<strong>  <spring:message code="registration.user.password" /> <span class="notice_star">*</span> </strong> 
+								<form:input path="password" type="password" />
+								</label> 
+								<span class="errormsg"> <form:errors path="password" class="errormsg" /></span>
+							</div>
+							
+							<div class="form_element login">
+								<label> 
+								<strong>  <spring:message code="registration.user.matching_password" /> <span class="notice_star">*</span> </strong> 
+								<form:input path="matchingPassword" type="password" />
+								</label> 
+								<span class="errormsg"> <form:errors path="matchingPassword" class="errormsg" /></span>
+							</div>
+						
+							<div class="form_element submit_button">				
+								<input type="submit" value="<spring:message code="registration.user.register" />" class="reg_button" />
+							</div>
+							
+						</form:form>
+					
+					
+					
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
 
-		<spring:message code="registration.user.surname" />
-		<form:input path="surname" />
-		<br />
-		<form:errors path="surname" class="errormsg" />
-		<br />
 
-		<spring:message code="registration.user.email" />
-		<form:input path="email" type="email" />
-		<br />
-		<form:errors path="email" class="errormsg" />
-		<br />
-
-		<spring:message code="registration.user.password" />
-		<form:input path="password" type="password" />
-		<br />
-		<form:errors path="password" class="errormsg" />
-		<br />
-
-		<spring:message code="registration.user.matching_password" />
-		<form:input path="matchingPassword" type="password" />
-		<br />
-		<form:errors path="matchingPassword" class="errormsg" />
-		<br/>
-		<form:errors class="errormsg" />
-		<br />
-		
-		<input type="submit"
-			value="<spring:message code="registration.user.register"/>" />
-	</form:form>
+	
 
 
 </body>

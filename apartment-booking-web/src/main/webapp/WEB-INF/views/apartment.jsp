@@ -43,7 +43,7 @@
                 <%--        edit main user info block--%>
                 
                 <div class="create_account_form_block page_block">
-                  	<form:form method="POST" modelAttribute="editedUser" class="create_account_form" id="create_account"> 
+                  <form:form method="POST" modelAttribute="editedUser" class="create_account_form" id="create_account"> 
               	 	<form:input type="hidden" path="id" value="${sessionScope.user.id}"/>
                         <div class="form_element name">
                             <label>

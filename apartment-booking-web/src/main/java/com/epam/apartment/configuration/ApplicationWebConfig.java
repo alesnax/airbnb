@@ -16,10 +16,13 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.handler.MappedInterceptor;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import com.epam.apartment.interceptor.UserAuthorisatedInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -48,9 +51,15 @@ public class ApplicationWebConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
+
+		// register locale change interceptor
 		LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
 		localeChangeInterceptor.setParamName("lang");
 		registry.addInterceptor(localeChangeInterceptor);
+
+		// register User authorisated interceptor
+		registry.addInterceptor(new MappedInterceptor(new String[] { "/user/**" }, new String[] { "/user/login", "/user/registration" }, new UserAuthorisatedInterceptor()));
+
 	}
 
 	@Bean(name = "localeResolver")

@@ -3,6 +3,9 @@ package com.epam.apartment.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 public class ApartmentCriteria extends Entity {
 
 	/**
@@ -14,7 +17,11 @@ public class ApartmentCriteria extends Entity {
 	private String city;
 	private Integer guestNumber;
 	private BigDecimal maxPrice;
+
+	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate arrivalDate;
+
+	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate leavingDate;
 
 	public ApartmentCriteria() {
