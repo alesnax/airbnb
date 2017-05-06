@@ -9,9 +9,11 @@ import com.epam.apartment.model.ApartmentCriteria;
 public interface ApartmentDao {
 
 	List<Apartment> findAvailableApartments(LocalDate arrivalDate, LocalDate leavingDate);
-	
+
 	List<Apartment> findConcreteApartment(String name);
-	
+
 	List<Apartment> findAvailableApartmentByCriteria(ApartmentCriteria criteria);
+
+	Apartment findApartmentById(int id);
 
 }

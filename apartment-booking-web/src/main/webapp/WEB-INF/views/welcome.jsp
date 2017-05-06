@@ -23,7 +23,7 @@
     <div class="buttonD">
     
         <%-- <fmt:message bundle="${config}" key="command.go_to_main_page" var="go_to_main_page"/> --%>
-        <a href="/">
+        <a href="/apartment/main">
             <p><spring:message code="welcome.page.link_text"/></p>
         </a>
     </div>

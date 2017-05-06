@@ -14,4 +14,6 @@ public interface ApartmentService {
 
 	List<Apartment> findAvailableApartmentByCriteria(ApartmentCriteria criteria);
 
+	Apartment findApartmentById(int id);
+
 }

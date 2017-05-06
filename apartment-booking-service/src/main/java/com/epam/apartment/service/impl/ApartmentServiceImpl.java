@@ -52,4 +52,10 @@ public class ApartmentServiceImpl implements ApartmentService {
 		}
 		return true;
 	}
+
+	@Override
+	public Apartment findApartmentById(int id) {
+
+		return apartmentDao.findApartmentById(id);
+	}
 }

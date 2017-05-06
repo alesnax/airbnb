@@ -38,6 +38,9 @@ public class JdbcApartmentDao implements ApartmentDao {
 			+ "WHERE AP_ID NOT IN (SELECT BO_APARTMENT FROM BOOKINGS WHERE (:p_ARRIVAL_DATE IS NULL OR :p_ARRIVAL_DATE < BO_END) AND (:p_LEAVING_DATE IS NULL OR :p_LEAVING_DATE > BO_START)) "
 			+ "AND (:p_COUNTRY IS NULL OR :p_COUNTRY = LO_COUNTRY) AND (:p_CITY IS NULL OR :p_CITY = LO_CITY) AND (:p_GUEST_NUMBER IS NULL OR :p_GUEST_NUMBER = AP_MAX_GUEST_NUMBER) AND (:p_MAX_PRICE IS NULL OR :p_MAX_PRICE <= AP_PRICE)";
 
+	private static final String SELECT_APARTMENT_BY_ID = "SELECT AP_ID, AP_NAME, AP_PRICE, AP_MAX_GUEST_NUMBER, LO_COUNTRY, LO_CITY, LO_STREET, LO_BUILDING_NO, TY_TYPE, TY_DESCRIPTION "
+			+ "FROM APARTMENTS JOIN LOCATIONS ON LOCATIONS.LO_ID=AP_LOCATION_ID JOIN TYPE_APARTMENTS ON TYPE_APARTMENTS.TY_ID = APARTMENTS.AP_TYPE_ID WHERE :p_ID = AP_ID";
+
 	private static final String COUNTRY = "LO_COUNTRY";
 	private static final String CITY = "LO_CITY";
 	private static final String STREET = "LO_STREET";
@@ -49,6 +52,7 @@ public class JdbcApartmentDao implements ApartmentDao {
 	private static final String PRICE = "AP_PRICE";
 	private static final String MAX_GUEST_NUMBER = "AP_MAX_GUEST_NUMBER";
 
+	private static final String ID_PARAM = "p_ID";
 	private static final String ARRIVAL_PARAM = "p_ARRIVAL_DATE";
 	private static final String LEAVING_PARAM = "p_LEAVING_DATE";
 	private static final String NAME_PARAM = "p_NAME";
@@ -66,17 +70,20 @@ public class JdbcApartmentDao implements ApartmentDao {
 		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
+	@Override
 	public List<Apartment> findAvailableApartments(LocalDate arrivalDate, LocalDate leavingDate) {
 		SqlParameterSource namedParameters = new MapSqlParameterSource().addValue(ARRIVAL_PARAM, Date.valueOf(arrivalDate)).addValue(LEAVING_PARAM, Date.valueOf(leavingDate));
 		return this.jdbcTemplate.query(SELECT_AVAILABLE_APARTMENTS, namedParameters, new ApatrmentMapper());
 	}
 
+	@Override
 	public List<Apartment> findConcreteApartment(String name) {
 		String namePattern = PERCENT.concat(name).concat(PERCENT);
 		SqlParameterSource namedParameters = new MapSqlParameterSource(NAME_PARAM, namePattern);
 		return this.jdbcTemplate.query(SELECT_APARTMETNS_BY_NAME, namedParameters, new ApatrmentMapper());
 	}
 
+	@Override
 	public List<Apartment> findAvailableApartmentByCriteria(ApartmentCriteria criteria) {
 		Date arrivalDate = criteria.getArrivalDate() != null ? Date.valueOf(criteria.getArrivalDate()) : null;
 		Date leavingDate = criteria.getLeavingDate() != null ? Date.valueOf(criteria.getLeavingDate()) : null;
@@ -84,6 +91,17 @@ public class JdbcApartmentDao implements ApartmentDao {
 				.addValue(GUEST_NUMBER_PARAM, criteria.getGuestNumber()).addValue(MAX_PRICE_PARAM, criteria.getMaxPrice()).addValue(ARRIVAL_PARAM, arrivalDate).addValue(LEAVING_PARAM, leavingDate);
 
 		return this.jdbcTemplate.query(SELECT_APARTMENTS_BY_CRITERIA, namedParameters, new ApatrmentMapper());
+	}
+
+	@Override
+	public Apartment findApartmentById(int id) {
+		SqlParameterSource namedParameters = new MapSqlParameterSource(ID_PARAM, new Integer(id));
+		Apartment apartment = null;
+		List<Apartment> apartments = this.jdbcTemplate.query(SELECT_APARTMENT_BY_ID, namedParameters, new ApatrmentMapper());
+		if (!apartments.isEmpty()) {
+			apartment = apartments.get(0);
+		}
+		return apartment;
 	}
 
 	private static class ApatrmentMapper implements RowMapper<Apartment> {
@@ -106,4 +124,5 @@ public class JdbcApartmentDao implements ApartmentDao {
 			return apartment;
 		}
 	}
+
 }

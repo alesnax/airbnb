@@ -14,6 +14,7 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.MappedInterceptor;
@@ -21,8 +22,10 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.util.UrlPathHelper;
 
 import com.epam.apartment.interceptor.UserAuthorisatedInterceptor;
+import com.epam.apartment.interceptor.UserNotAuthorisatedInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -50,6 +53,13 @@ public class ApplicationWebConfig extends WebMvcConfigurerAdapter {
 	}
 
 	@Override
+	public void configurePathMatch(PathMatchConfigurer configurer) {
+		UrlPathHelper urlPathHelper = new UrlPathHelper();
+		urlPathHelper.setRemoveSemicolonContent(false);
+		configurer.setUrlPathHelper(urlPathHelper);
+	}
+
+	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 
 		// register locale change interceptor
@@ -57,8 +67,11 @@ public class ApplicationWebConfig extends WebMvcConfigurerAdapter {
 		localeChangeInterceptor.setParamName("lang");
 		registry.addInterceptor(localeChangeInterceptor);
 
-		// register User authorisated interceptor
-		registry.addInterceptor(new MappedInterceptor(new String[] { "/user/**" }, new String[] { "/user/login", "/user/registration" }, new UserAuthorisatedInterceptor()));
+		// register User not authorisated interceptor
+		registry.addInterceptor(new MappedInterceptor(new String[] { "/user/**" }, new String[] { "/user/login", "/user/registration" }, new UserNotAuthorisatedInterceptor()));
+
+		// register User not authorisated interceptor
+		registry.addInterceptor(new MappedInterceptor(new String[] { "/user/login", "/user/registration" }, new UserAuthorisatedInterceptor()));
 
 	}
 
