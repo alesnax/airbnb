@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.LocaleResolver;
@@ -29,6 +30,7 @@ import com.epam.apartment.interceptor.UserNotAuthorisatedInterceptor;
 
 @Configuration
 @EnableWebMvc
+@EnableAsync
 @ComponentScan(basePackages = { "com.epam.apartment" })
 @ImportResource("classpath:/applicationContext-service.xml")
 public class ApplicationWebConfig extends WebMvcConfigurerAdapter {

@@ -55,7 +55,10 @@
         			<td>${apartment.name}</td>
         			<td>${apartment.maxGuestNumber}</td>
         			<td>${apartment.type.type}</td>  
-        			<td><a href="/apartment/info/${apartment.id}">see info</a></td>    			
+        			<td>${apartment.location.country}</td>  
+        			<td>${apartment.location.city}</td>  
+        			<td><a href="/apartment/info/${apartment.id}">see info</a></td>   
+        			 			
         			
         		</tr>
         	</c:forEach>

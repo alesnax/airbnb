@@ -16,4 +16,6 @@ public interface ApartmentDao {
 
 	Apartment findApartmentById(int id);
 
+	List<Apartment> findAvailableApartmentByLocationId(String city);
+
 }

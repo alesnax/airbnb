@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -73,6 +74,13 @@ public class ApartmentController {
 		return "apartment";
 	}
 
-	// @ExceptionHandler
+	@RequestMapping(value = "/find/{location}")
+	public String findNearestApartments(@MatrixVariable(name = "locationId", pathVar = "location") String city, Model model) {
+		List<Apartment> apartments = apartmentService.findAvailableApartmentByLocation(city);
+		model.addAttribute("apartments", apartments);
+		model.addAttribute("page_name", "apartments by nearest location");
+
+		return "apartments";
+	}
 
 }

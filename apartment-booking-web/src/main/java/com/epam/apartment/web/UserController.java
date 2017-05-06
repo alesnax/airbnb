@@ -1,5 +1,7 @@
 package com.epam.apartment.web;
 
+import java.util.concurrent.Callable;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -96,24 +98,31 @@ public class UserController {
 	 * @return registration page or redirecting to user profile
 	 */
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public String registerUserAccount(@ModelAttribute("account") @Valid final UserDto accountDto, BindingResult result, Errors errors, Model model) {
-		User user = null;
-		if (result.hasErrors()) {
-			return "registration";
-		} else {
-			user = createUserAccount(accountDto, result);
-		}
+	public Callable<String> registerUserAccount(@ModelAttribute("account") @Valid final UserDto accountDto, BindingResult result, Errors errors, Model model) {
+		return new Callable<String>() {
 
-		if (user == null) {
-			result.rejectValue("email", "email.email_exists");
-		}
-		if (result.hasErrors()) {
-			return "registration";
-		} else {
-			model.addAttribute(user);
-			// session.setAttribute("user", user);
-			return "redirect:/user/profile";
-		}
+			@Override
+			public String call() throws Exception {
+				User user = null;
+				if (result.hasErrors()) {
+					return "registration";
+				} else {
+					user = createUserAccount(accountDto, result);
+				}
+
+				if (user == null) {
+					result.rejectValue("email", "email.email_exists");
+				}
+				if (result.hasErrors()) {
+					return "registration";
+				} else {
+					model.addAttribute(user);
+					// session.setAttribute("user", user);
+					return "redirect:/user/profile";
+				}
+			}
+		};
+
 	}
 
 	/**

@@ -35,6 +35,11 @@
                     <spring:message code="common.log_out_text"/>
                 </a>
             </div>
+            <div class="fl_r h_links">
+                <a class="h_link" href="/user/profile">
+                   profile
+                </a>
+            </div>
         </c:if> 
         <c:if test="${empty sessionScope.user}"> 
             <div class="fl_r lang_links">

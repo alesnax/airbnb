@@ -53,6 +53,7 @@ TH {
 					</tr>
 				</table>
 
+				<a href="/apartment/find/;locationId=${apartment.location.city}">show other apartments in ${apartment.location.city}</a>
 				<a href="/apartment/main">go to main</a>
 
 			</section>

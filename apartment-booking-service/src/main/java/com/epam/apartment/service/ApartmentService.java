@@ -16,4 +16,6 @@ public interface ApartmentService {
 
 	Apartment findApartmentById(int id);
 
+	List<Apartment> findAvailableApartmentByLocation(String city);
+
 }

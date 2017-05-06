@@ -58,4 +58,10 @@ public class ApartmentServiceImpl implements ApartmentService {
 
 		return apartmentDao.findApartmentById(id);
 	}
+
+	@Override
+	public List<Apartment> findAvailableApartmentByLocation(String city) {
+		List<Apartment> apartments = apartmentDao.findAvailableApartmentByLocationId(city);
+		return apartments;
+	}
 }

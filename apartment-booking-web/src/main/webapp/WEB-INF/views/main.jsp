@@ -89,7 +89,7 @@
                                 <jsp:useBean id="now" class="java.util.Date" scope="page"/>
 						<%-- 		 <fmt:formatDate id={now} value="${now}"/> --%>
                                 
-                                  <form:input type="date" path="arrivalDate"  class="" />  
+                                  <form:input type="date" path="arrivalDate"  class="" required="true"/>  
                                  <%--   <span class="errormsg" id="error_0_FirstName"><form:errors path="name" class="errormsg" /></span> --%>
                                 </div>
                             </label>
@@ -106,7 +106,7 @@
                                     </strong>
                                 </div>
                                 <div class="right_form_field">
-                                  <form:input type="date" path="leavingDate" value=""  class=""  />  
+                                  <form:input type="date" path="leavingDate" value=""  class=""  required="true"/>  
 <%--                                    <span class="errormsg" id="error_0_FirstName"><form:errors path="name" class="errormsg" /></span> --%>
                                 </div>
                             </label>
