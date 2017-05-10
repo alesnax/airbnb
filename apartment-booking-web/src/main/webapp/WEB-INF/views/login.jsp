@@ -27,15 +27,13 @@
 								<form:form method="POST" modelAttribute="loginDto"
 									class="create_account_form" id="create_account">
 									<div class="enter_form_element login">
-										</strong> <form:input path="email" type="email" />
-										</label> <span class="errormsg"><form:errors path="email" class="errormsg" /></span>
+										<strong><form:input path="email" type="email" /></strong>
+										 <form:errors path="email" class="errormsg" />
 									</div>
 									<div class="enter_form_element password_form_element">
 									<spring:message code="registration.user.password" var="password_text"/>
-										<label> <form:input
-												path="password" type="password" placeholder="${password_text}"  />
-										</label> <span class="errormsg"><form:errors path="password"
-												class="errormsg" /></span>
+										<form:input path="password" type="password" placeholder="${password_text}" /> 
+										<form:errors path="password" class="errormsg" />
 									</div>
 
 									<%--    

@@ -10,12 +10,12 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.epam.apartment.exception.ApartmentNotFoundException;
@@ -45,7 +45,7 @@ public class ApartmentController {
 		return "apartments";
 	}
 
-	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	@GetMapping(value = "/main")
 	public String showFindApartments(Model model) {
 		ApartmentCriteria criteria = new ApartmentCriteria();
 		model.addAttribute("apartment_criteria", criteria);
@@ -75,7 +75,7 @@ public class ApartmentController {
 	}
 
 	@RequestMapping(value = "/find/{location}")
-	public String findNearestApartments(@MatrixVariable(name = "locationId", pathVar = "location") String city, Model model) {
+	public String findNearestApartments(@MatrixVariable(name = "city", pathVar = "location") String city, Model model) {
 		List<Apartment> apartments = apartmentService.findAvailableApartmentByLocation(city);
 		model.addAttribute("apartments", apartments);
 		model.addAttribute("page_name", "apartments by nearest location");

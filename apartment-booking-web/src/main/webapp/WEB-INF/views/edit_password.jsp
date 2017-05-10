@@ -90,7 +90,7 @@
                                 <div class="right_form_field">
                                     <form:input type="password" path="matchingPassword" id="PasswdAgain" class="" placeholder="${p3_ph}"/>
                                     <span class="errormsg" id="error_0_PasswdAgain"><form:errors path="matchingPassword" class="errormsg" />
-                                 <form:errors class="errormsg" />
+                                 	<form:errors class="errormsg" />
                                     </span>
                                 </div>
                             </label>
@@ -101,7 +101,7 @@
                             <div class="cancel_submit_block" >
                                 
                                 <spring:message code="common.post.cancel_text" var="cancel_text"/>
-                                <a class="cancel_link" href="/user/edit/pass">${cancel_text}</a>
+                                <a class="cancel_link" href="${pageContext.request.contextPath}/user/edit/pass">${cancel_text}</a>
                             </div>
                         </div>
                     </form:form>

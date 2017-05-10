@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -36,9 +38,10 @@ public class UserController {
 	 * Show user authorization page, add model attribute loginDto.
 	 * 
 	 * @param model
+	 *            stores loginDto
 	 * @return login page logic name
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@GetMapping(value = "/login")
 	public String showAuthorisationForm(final Model model) {
 		final LoginDto loginDto = new LoginDto();
 		model.addAttribute("loginDto", loginDto);
@@ -49,12 +52,16 @@ public class UserController {
 	 * Process user authorization.
 	 * 
 	 * @param loginDto
+	 *            contain email and password data
 	 * @param result
+	 *            binds result with errors
 	 * @param errors
-	 * @param session
+	 *            will be shown if validation is failed
+	 * @param model
+	 *            stores user (adds in session scope)
 	 * @return login page or redirecting to user profile
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@PostMapping(value = "/login")
 	public String processAuthorisation(@ModelAttribute("loginDto") @Valid final LoginDto loginDto, BindingResult result, Errors errors, Model model) {
 		User user = null;
 		if (result.hasErrors()) {
@@ -65,12 +72,9 @@ public class UserController {
 
 		if (user == null) {
 			result.rejectValue("password", "login.wrong_pass_or_email");
-		}
-		if (result.hasErrors()) {
 			return "login";
 		} else {
 			model.addAttribute(user);
-			// session.setAttribute("user", authorisated);
 			return "redirect:/user/profile";
 		}
 	}
@@ -79,9 +83,10 @@ public class UserController {
 	 * Show user registration page, add model attribute userDto.
 	 * 
 	 * @param model
+	 *            stores account dto
 	 * @return registration page logic name
 	 */
-	@RequestMapping(value = "/registration", method = RequestMethod.GET)
+	@GetMapping(value = "/registration")
 	public String showRegistrationForm(final Model model) {
 		final UserDto accountDto = new UserDto();
 		model.addAttribute("account", accountDto);
@@ -92,12 +97,16 @@ public class UserController {
 	 * Process user registration.
 	 * 
 	 * @param accountDto
+	 *            contain information about new user
 	 * @param result
+	 *            binds result with errors
 	 * @param errors
-	 * @param session
+	 *            will be shown if validation is failed
+	 * @param model
+	 *            stores user (adds to session scope)
 	 * @return registration page or redirecting to user profile
 	 */
-	@RequestMapping(value = "/registration", method = RequestMethod.POST)
+	@PostMapping(value = "/registration")
 	public Callable<String> registerUserAccount(@ModelAttribute("account") @Valid final UserDto accountDto, BindingResult result, Errors errors, Model model) {
 		return new Callable<String>() {
 
@@ -117,12 +126,10 @@ public class UserController {
 					return "registration";
 				} else {
 					model.addAttribute(user);
-					// session.setAttribute("user", user);
 					return "redirect:/user/profile";
 				}
 			}
 		};
-
 	}
 
 	/**
@@ -141,7 +148,7 @@ public class UserController {
 	 * @param model
 	 * @return edit_profile page name
 	 */
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	@GetMapping(value = "/edit")
 	public String editProfile(final Model model) {
 		final EditedUserDto editedUser = new EditedUserDto();
 		model.addAttribute("editedUser", editedUser);
@@ -153,7 +160,9 @@ public class UserController {
 	 * 
 	 * @param editedUser
 	 * @param result
+	 *            binds result with errors
 	 * @param errors
+	 *            will be shown if validation is failed
 	 * @param session
 	 * @return
 	 */
@@ -193,9 +202,10 @@ public class UserController {
 	/**
 	 * 
 	 * @param changePassword
-	 * @param model
 	 * @param result
+	 *            binds result with errors
 	 * @param errors
+	 *            will be shown if validation is failed
 	 * @param session
 	 * @return
 	 */

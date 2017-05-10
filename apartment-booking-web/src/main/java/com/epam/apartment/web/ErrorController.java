@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ErrorController {
 
 	@RequestMapping(value = "/error")
-	public String Error() {
+	public String errorHandle() {
 		return "error/error404";
 	}
 

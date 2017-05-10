@@ -16,7 +16,7 @@ public class LoginDto {
 	@NotNull(message = "{password.null}")
 	@Size(min = 8, max = 40, message = "{password.size}")
 	@ValidPassword(message = "{password.rule}")
-	private String password;
+	private transient String password;
 
 	public LoginDto() {
 

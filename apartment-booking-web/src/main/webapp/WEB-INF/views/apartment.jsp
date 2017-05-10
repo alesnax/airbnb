@@ -39,7 +39,6 @@ TH {
 				<table>
 					<thead>
 						<tr>
-						
 							<th>name</th>
 							<th>max guests</th>
 							<th>type</th>

@@ -19,7 +19,7 @@ public class GlobalControllerExceptionHandler {
 		// added
 		// to the model) but see "Extending ExceptionHandlerExceptionResolver"
 		// below.
-		return "Sorry something was happened on server!";
+		return "<h1>Sorry something was happened on server!</h1>";
 	}
 
 }
