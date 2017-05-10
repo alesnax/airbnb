@@ -87,9 +87,9 @@
                                 </div>
                                 <div class="right_form_field">
                                 <jsp:useBean id="now" class="java.util.Date" scope="page"/>
-						<%-- 		 <fmt:formatDate id={now} value="${now}"/> --%>
+				 		 <fmt:formatDate type="date" value="${now}" pattern = "yyyy-MM-dd" var="currentDate"/> 
                                 
-                                  <form:input type="date" path="arrivalDate"  class="" required="true"/>  
+                                  <form:input type="date" path="arrivalDate" min="${currentDate}" class="" required="true" value="${currentDate}"/>  
                                  <%--   <span class="errormsg" id="error_0_FirstName"><form:errors path="name" class="errormsg" /></span> --%>
                                 </div>
                             </label>
@@ -106,7 +106,7 @@
                                     </strong>
                                 </div>
                                 <div class="right_form_field">
-                                  <form:input type="date" path="leavingDate" value=""  class=""  required="true"/>  
+                                  <form:input type="date" path="leavingDate" value="${currentDate}"  class=""  required="true" min="${currentDate}"/>  
 <%--                                    <span class="errormsg" id="error_0_FirstName"><form:errors path="name" class="errormsg" /></span> --%>
                                 </div>
                             </label>
