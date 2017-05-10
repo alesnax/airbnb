@@ -11,9 +11,9 @@
 <title>User profile</title>
 
 <link rel="shortcut icon"
-	href="<c:url value="/resources/img/q_logo.png" />" type="image/png">
+	href="<c:url value="${pageContext.request.contextPath}/resources/img/q_logo.png" />" type="image/png">
 <link rel="stylesheet"
-	href="<c:url value="/resources/css/user_profile_style.css" />">
+	href="<c:url value="${pageContext.request.contextPath}/resources/css/user_profile_style.css" />">
 </head>
 <body>
 
@@ -26,7 +26,8 @@
                     <div class="page_avatar">
                         <div class="photo-wrap">
 
-                            <img class="avatar" src="<c:url value="/resources/img/no_avatar.jpg" />" alt="no_photo" onerror="src='/resources/img/no_avatar.jpg'">
+                            <img class="avatar" src="<c:url value="${pageContext.request.contextPath}/resources/img/no_avatar.jpg" />" alt="no_photo" 
+                            onerror="src='${pageContext.request.contextPath}/resources/img/no_avatar.jpg'">
    
  						<!-- 	<img class="avatar" src="/resources/img/no_avatar.jpg" alt="no_photo" > -->
                    </div>

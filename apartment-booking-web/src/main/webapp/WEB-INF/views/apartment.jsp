@@ -9,9 +9,9 @@
 <meta charset="utf-8">
 <title><spring:message code="edit_profile.page_title" /></title>
 <link rel="shortcut icon"
-	href="<c:url value="/resources/img/q_logo.png" />" type="image/png">
+	href="<c:url value="${pageContext.request.contextPath}/resources/img/q_logo.png" />" type="image/png">
 <link rel="stylesheet"
-	href="<c:url value="/resources/css/edit_profile_style.css" />">
+	href="<c:url value="${pageContext.request.contextPath}/resources/css/edit_profile_style.css" />">
 
 <style type="text/css">
 TABLE {
@@ -43,18 +43,22 @@ TH {
 							<th>name</th>
 							<th>max guests</th>
 							<th>type</th>
+							<th>country</th>
+							<th>city</th>
 						</tr>
 					</thead>
 					
 					<tr style="border: 1px;">
-						<td>${apartment.name}</td>
-						<td>${apartment.maxGuestNumber}</td>
-						<td>${apartment.type.type}</td>
+							<td>${apartment.name}</td>
+							<td>${apartment.maxGuestNumber}</td>
+							<td>${apartment.type.type}</td>
+							<td>${apartment.location.country}</td>
+							<td>${apartment.location.city}</td>
 					</tr>
 				</table>
 
-				<a href="/apartment/find/;locationId=${apartment.location.city}">show other apartments in ${apartment.location.city}</a>
-				<a href="/apartment/main">go to main</a>
+				<a href="${pageContext.request.contextPath}/apartment/find/;city=${apartment.location.city}">show other apartments in ${apartment.location.city}</a>
+				<a href="${pageContext.request.contextPath}/apartment/main">go to main</a>
 
 			</section>
 		</div>

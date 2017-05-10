@@ -9,6 +9,7 @@
 <body>
 	
 	error 404
+	<span>${reason}</span>
 	
 </body>
 </html>

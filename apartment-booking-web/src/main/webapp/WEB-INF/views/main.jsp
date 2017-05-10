@@ -10,8 +10,8 @@
     <title>
         <spring:message code="edit_profile.page_title"/>
     </title>
-    <link rel="shortcut icon" href="<c:url value="/resources/img/q_logo.png" />" type="image/png">
-	<link rel="stylesheet" href="<c:url value="/resources/css/edit_profile_style.css" />">
+    <link rel="shortcut icon" href="<c:url value="${pageContext.request.contextPath}/resources/img/q_logo.png" />" type="image/png">
+	<link rel="stylesheet" href="<c:url value="${pageContext.request.contextPath}/resources/css/edit_profile_style.css" />">
 </head>
 <body>
 
@@ -117,7 +117,7 @@
                             <input type="submit" value="Find" class="reg_button">
                             <div class="cancel_submit_block" >
                                 <spring:message code="common.post.cancel_text" var="cancel_text"/>
-                                <a class="cancel_link" href="/apartment/main">${cancel_text}</a>
+                                <a class="cancel_link" href="${pageContext.request.contextPath}/apartment/main">${cancel_text}</a>
                             </div>
                         </div> 
 

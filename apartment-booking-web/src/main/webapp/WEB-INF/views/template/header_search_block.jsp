@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<fmt:setLocale value="${sessionScope.locale}"/>
+<%-- <fmt:setLocale value="${sessionScope.locale}"/>
 <fmt:setBundle basename="locale" var="loc"/>
 <fmt:setBundle basename="config" var="config"/>
 
@@ -27,3 +27,4 @@
 
 </body>
 </html>
+ --%>

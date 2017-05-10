@@ -10,9 +10,9 @@
 	<spring:message code="authorization.page_title" />
 </title>
 <link rel="shortcut icon"
-	href="<c:url value="/resources/img/q_logo.png" />" type="image/png">
+	href="<c:url value="${pageContext.request.contextPath}/resources/img/q_logo.png" />" type="image/png">
 <link rel="stylesheet"
-	href="<c:url value="/resources/css/user_authorization_style.css" />">
+	href="<c:url value="${pageContext.request.contextPath}/resources/css/user_authorization_style.css" />">
 </head>
 <body>
 	<c:import url="template/header_common.jsp" />

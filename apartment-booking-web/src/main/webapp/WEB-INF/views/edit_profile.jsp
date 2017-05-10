@@ -10,8 +10,8 @@
     <title>
         <spring:message code="edit_profile.page_title"/>
     </title>
-    <link rel="shortcut icon" href="<c:url value="/resources/img/q_logo.png" />" type="image/png">
-	<link rel="stylesheet" href="<c:url value="/resources/css/edit_profile_style.css" />">
+    <link rel="shortcut icon" href="<c:url value="${pageContext.request.contextPath}/resources/img/q_logo.png" />" type="image/png">
+	<link rel="stylesheet" href="<c:url value="${pageContext.request.contextPath}/resources/css/edit_profile_style.css" />">
 </head>
 <body>
 
@@ -32,7 +32,8 @@
                     <div class="page_block photo_block">
                         <div class="page_avatar">
                             <div class="photo-wrap">
-                                <img class="avatar" src='/resources/img/no_avatar.jpg' alt="no_photo" onerror="src='/resources/img/no_avatar.jpg'">
+                                <img class="avatar" src='${pageContext.request.contextPath}/resources/img/no_avatar.jpg' alt="no_photo" 
+                                onerror="src='${pageContext.request.contextPath}/resources/img/no_avatar.jpg'">
                             </div>
                         </div>
                     </div>
@@ -103,7 +104,7 @@
                 </div>
                 <div class="create_account_form_block page_block">
                 	<div class="answers_header">
-                            <a class="answers_title" href="/user/edit/pass">
+                            <a class="answers_title" href="${pageContext.request.contextPath}/user/edit/pass">
                                 <span><spring:message code="edit_profile.edit_pass_text"/></span>
                             </a>
                         </div>

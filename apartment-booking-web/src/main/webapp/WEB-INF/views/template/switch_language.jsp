@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="/resources/css/header_common_style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header_common_style.css">
 </head>
 <body>
 	<div class="fl_r lang_links">

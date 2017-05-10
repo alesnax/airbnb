@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/resources/css/header_common_style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header_common_style.css">
 </head>
 <body>
 <%-- <fmt:message bundle="${config}" key="img.common.logo" var="main_logo"/> --%>
@@ -17,21 +17,21 @@
     <div class="topbar_wrapper">
         <div class="fl_l ">
             
-            <a href="/">
-               <img class="header_logo" src="<c:url value="/resources/img/logo.png" />" alt="Q&A logo"/>
+            <a href="${pageContext.request.contextPath}/">
+               <img class="header_logo" src="<c:url value="${pageContext.request.contextPath}/resources/img/logo.png" />" alt="Q&A logo"/>
             </a>
         </div>
        <spring:message code="common.header.search_form.placeholder" var="s_form_ph"/>
         <spring:message code="common.header.search_form.submit_value" var="s_submit_v"/>
       <div class="fl_l search_block">
             <form class="search_form" action="/apartment/search_by_name" method="get">
-                <input class="s_back_img search_input" name="apartment_name" value="" type="text" placeholder="${s_form_ph}"/>
+                <input class="s_back_img search_input" name="apartment_name" value="" type="search" placeholder="${s_form_ph}" required pattern=".{3,}"/>
                 <input class="search_submit" type="submit" value="${s_submit_v}"/>
             </form>
         </div>
       <c:if test="${not empty sessionScope.user}">
             <div class="fl_r h_links">
-                <a class="h_link" href="/user/logout">
+                <a class="h_link" href="${pageContext.request.contextPath}/user/logout">
                     <spring:message code="common.log_out_text"/>
                 </a>
             </div>

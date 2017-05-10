@@ -11,8 +11,8 @@
 	    <spring:message code="welcome.page_title"/>
     </title>
    
-    <link rel="shortcut icon" href="<c:url value="/resources/img/q_logo.png" />" type="image/png">
-    <link rel="stylesheet" href="<c:url value="/resources/css/welcome_style.css" />">
+    <link rel="shortcut icon" href="<c:url value="${pageContext.request.contextPath}/resources/img/q_logo.png" />" type="image/png">
+    <link rel="stylesheet" href="<c:url value="${pageContext.request.contextPath}/resources/css/welcome_style.css" />">
 </head>
 <body>
 <c:import url="template/header_common.jsp"/> 
@@ -23,7 +23,7 @@
     <div class="buttonD">
     
         <%-- <fmt:message bundle="${config}" key="command.go_to_main_page" var="go_to_main_page"/> --%>
-        <a href="/apartment/main">
+        <a href="${pageContext.request.contextPath}/apartment/main">
             <p><spring:message code="welcome.page.link_text"/></p>
         </a>
     </div>
