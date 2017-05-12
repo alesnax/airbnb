@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<html>
+ <html>
 <head>
 <title>
 	<spring:message code="authorization.page_title" />
@@ -34,16 +34,16 @@
 									<spring:message code="registration.user.password" var="password_text"/>
 										<form:input path="password" type="password" placeholder="${password_text}" /> 
 										<form:errors path="password" class="errormsg" />
-									</div>
+									</div> 
 
-									<%--    
+								    
                                 <div class="enter_form_element password_forgot_element">
-                                    <fmt:message bundle="${config}" key="command.go_to_password_recovery" var="forgot_pass_command"/>
-                                    <a class="forgot_pass" href="${forgot_pass_command}">
-                                        <fmt:message bundle="${loc}" key="guest.user_authorization_page.forgot_password"/>
+                                    
+                                    <a class="forgot_pass" href="<c:url value="${pageContext.request.contextPath}/user/forgot_pass" />">
+                                        <spring:message code="guest.user_authorization_page.forgot_password"/>
                                     </a>
                                 </div>
-                                 --%>
+                               
 
 									<div class="enter_form_element submit_button">
 										<input type="submit"

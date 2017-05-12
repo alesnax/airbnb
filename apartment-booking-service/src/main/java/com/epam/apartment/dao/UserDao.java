@@ -1,5 +1,6 @@
 package com.epam.apartment.dao;
 
+import com.epam.apartment.model.PasswordResetToken;
 import com.epam.apartment.model.User;
 
 public interface UserDao {
@@ -10,9 +11,15 @@ public interface UserDao {
 
 	boolean changePswd(int id, String oldPswd, String newPswd);
 
-	boolean restorePswd(String email, String newPswd);
+	// boolean restorePswd(String email, String newPswd);
 
 	User editProfile(User user);
 
 	User findByEmail(String email);
+
+	void savePaswordResetToken(PasswordResetToken resetPassToken);
+
+	PasswordResetToken findPasswordResetToken(String token);
+
+	void restorePswd(long id, String newPassword);
 }

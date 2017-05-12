@@ -32,7 +32,7 @@
                     <div class="page_block photo_block">
                         <div class="page_avatar">
                             <div class="photo-wrap">
-                                <img class="avatar" src='${pageContext.request.contextPath}/resources/img/no_avatar.jpg' alt="no_photo" 
+                                <img class="avatar" src='${pageContext.request.contextPath}/resources/img/${user.avatar}' alt="no_photo" 
                                 onerror="src='${pageContext.request.contextPath}/resources/img/no_avatar.jpg'">
                             </div>
                         </div>

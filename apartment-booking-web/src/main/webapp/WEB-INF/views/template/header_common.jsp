@@ -31,12 +31,12 @@
         </div>
       <c:if test="${not empty sessionScope.user}">
             <div class="fl_r h_links">
-                <a class="h_link" href="${pageContext.request.contextPath}/user/logout">
+                <a class="h_link" href="${pageContext.request.contextPath}/logout">
                     <spring:message code="common.log_out_text"/>
                 </a>
             </div>
             <div class="fl_r h_links">
-                <a class="h_link" href="/user/profile">
+                <a class="h_link" href="${pageContext.request.contextPath}/user/profile">
                    profile
                 </a>
             </div>
@@ -61,12 +61,12 @@
                 </a>
             </div>
             <div class="fl_r h_links">
-                <a class="h_link" href="/user/registration">
+                <a class="h_link" href="${pageContext.request.contextPath}/registration">
                     <spring:message code="common.sign_up_text"/>
                 </a>
             </div>
             <div class="fl_r h_links">
-                <a class="h_link" href="/user/login">
+                <a class="h_link" href="${pageContext.request.contextPath}/login">
                     <spring:message code="common.sign_in_text"/>
                 </a>
             </div>

@@ -29,7 +29,7 @@
 			<%--     <c:import url="template/header_search_block.jsp"/> --%>
 			<c:import url="template/switch_language.jsp" />
 			<div class="fl_r h_links">
-				<a class="h_link" href="/user/login"> <spring:message
+				<a class="h_link" href="${pageContext.request.contextPath}/login"> <spring:message
 						code="common.sign_in_text" />
 				</a>
 			</div>
@@ -43,54 +43,68 @@
 				<div class="validation_block ">
 					<div class="create_account_form_block page_block">
 
-
 						<form:form method="POST" modelAttribute="account"
 							class="create_account_form">
 
 							<div class="form_element login">
-								<label> <strong> <spring:message code="registration.user.name" /> <span class="notice_star">*</span>
-								</strong> <form:input path="name" />
-								</label>
+								<form:label path="name">
+									<strong> <spring:message code="registration.user.name" />
+										<span class="notice_star">*</span></strong>
+								</form:label>
+								<form:input path="name" />
+
 								<form:errors path="name" class="errormsg" />
 							</div>
 
 							<div class="form_element login">
-								<label> <strong> <spring:message
+								<form:label path="surname">
+									<strong> <spring:message
 											code="registration.user.surname" /> <span
 										class="notice_star">*</span>
-								</strong> <form:input path="surname" />
-								</label>
+									</strong>
+								</form:label>
+								<form:input path="surname" />
+
 								<form:errors path="surname" class="errormsg" />
 							</div>
 
 
 							<div class="form_element login">
-								<label> <strong> <spring:message
+								<form:label path="email">
+									<strong> <spring:message
 											code="registration.user.email" /> <span class="notice_star">*</span>
-								</strong> <form:input path="email" type="email" />
-								</label>
+									</strong>
+								</form:label>
+								<form:input path="email" type="email" />
+
 								<form:errors path="email" class="errormsg" />
 							</div>
 
 
 							<div class="form_element login">
-								<label> <strong> <spring:message
+								<form:label path="password">
+									<strong> <spring:message
 											code="registration.user.password" /> <span
 										class="notice_star">*</span>
-								</strong> <form:password path="password" />
-								</label>
+									</strong>
+								</form:label>
+								<form:password path="password" />
+
 								<form:errors path="password" class="errormsg" />
 							</div>
 
 							<div class="form_element login">
-								<label> <strong> <spring:message
+								<form:label path="matchingPassword">
+									<strong> <spring:message
 											code="registration.user.matching_password" /> <span
 										class="notice_star">*</span>
-								</strong> <form:password path="matchingPassword" />
-								</label>
+									</strong>
+								</form:label>
+								<form:password path="matchingPassword" />
+
 								<form:errors class="errormsg" />
 								<form:errors path="matchingPassword" class="errormsg" />
-								
+
 							</div>
 
 							<div class="form_element submit_button">

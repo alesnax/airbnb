@@ -6,25 +6,31 @@
 
 <html>
 <head>
-
-<title>Error - database makes tricks </title>
+<title><spring:message code="authorization.page_title" /></title>
 <link rel="shortcut icon"
-	href="<c:url value="${pageContext.request.contextPath}/resources/img/q_logo.png" />" type="image/png">
+	href="<c:url value="${pageContext.request.contextPath}/resources/img/q_logo.png" />"
+	type="image/png">
 <link rel="stylesheet"
 	href="<c:url value="${pageContext.request.contextPath}/resources/css/user_authorization_style.css" />">
 </head>
 <body>
-	<c:import url="../template/header_common.jsp" />
+	<c:import url="template/header_common.jsp" />
 
 	<div class="page_layout">
 		<div class="content">
 			<section>
 				<div class="wall_content wide_block">
 
-					<h1>databaseError</h1>
+					<div class="page_block wide_block post_content">
+						<div class="page_main_header_block">
+							<h1>
+								<%-- <spring:message code="pass_recov.txt.main_header" /> --%>
+								Please, check your email, to restore password!
+							</h1>
+						</div>
+					</div>
 				</div>
 			</section>
 		</div>
-	</div>		
+	</div>
 </body>
-</html>

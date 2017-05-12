@@ -9,7 +9,7 @@ public class Apartment extends Entity {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private int id;
+	private long id;
 	private String name;
 	private BigDecimal price;
 	private int maxGuestNumber;
@@ -20,11 +20,11 @@ public class Apartment extends Entity {
 
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -76,7 +76,7 @@ public class Apartment extends Entity {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + maxGuestNumber;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());

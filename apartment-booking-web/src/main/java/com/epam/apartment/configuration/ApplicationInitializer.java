@@ -11,15 +11,17 @@ import org.springframework.web.servlet.DispatcherServlet;
 public class ApplicationInitializer implements WebApplicationInitializer {
 
 	private static final String DISPATCHER_SERVLET_NAME = "dispatcher";
+	private static final String DISPATCHER_MAPPING = "/";
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
 		ctx.register(ApplicationWebConfig.class);
+
 		ctx.setServletContext(servletContext);
 
 		ServletRegistration.Dynamic servlet = servletContext.addServlet(DISPATCHER_SERVLET_NAME, new DispatcherServlet(ctx));
-		servlet.addMapping("/");
+		servlet.addMapping(DISPATCHER_MAPPING);
 		servlet.setAsyncSupported(true);
 		servlet.setLoadOnStartup(1);
 

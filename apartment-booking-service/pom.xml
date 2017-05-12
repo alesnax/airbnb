@@ -52,6 +52,9 @@
 			<version>${dbcp.version}</version>
 		</dependency>
 
+
+
+
 		<!-- Validation artifacts -->
 		<dependency>
 			<groupId>javax.validation</groupId>
@@ -69,7 +72,7 @@
 			<version>${passay.version}</version>
 		</dependency>
 
-		
+
 		<!-- Test database artifacts -->
 		<dependency>
 			<groupId>org.dbunit</groupId>
@@ -91,7 +94,18 @@
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.5.5</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+
 	</dependencies>
 
 </project>

@@ -9,7 +9,7 @@ public class Booking extends Entity {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private int id;
+	private long id;
 	private User user;
 	private Apartment apartment;
 	private LocalDate start;
@@ -19,11 +19,11 @@ public class Booking extends Entity {
 
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -65,7 +65,7 @@ public class Booking extends Entity {
 		int result = 1;
 		result = prime * result + ((apartment == null) ? 0 : apartment.hashCode());
 		result = prime * result + ((end == null) ? 0 : end.hashCode());
-		result = prime * result + id;
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((start == null) ? 0 : start.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;

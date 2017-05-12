@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.apartment.dao.UserDao;
+import com.epam.apartment.model.PasswordResetToken;
 import com.epam.apartment.model.User;
 
 @Repository("userDao")
@@ -31,7 +32,9 @@ public class JdbcUserDao implements UserDao {
 	private static final String UPDATE_PASSWORD_BY_ID = "UPDATE USERS SET U_PASSWORD = :p_NEW_PSWD WHERE U_ID = :p_ID AND U_PASSWORD = :p_OLD_PSWD";
 	private static final String UPDATE_USER_BY_ID = "UPDATE USERS SET U_EMAIL = :email, U_NAME = :name, U_SURNAME = :surname WHERE U_ID = :id";
 	private static final String SELECT_USER_BY_ID = "SELECT U_ID, U_EMAIL, U_NAME, U_SURNAME, U_BIRTHDAY FROM USERS WHERE U_ID = :p_ID";
-	private static final String UPDATE_PSWD_BY_EMAIL = "UPDATE USERS SET U_PASSWORD = :p_EMAIL WHERE U_EMAIL = :p_EMAIL";
+	private static final String UPDATE_PSWD_BY_ID = "UPDATE USERS SET U_PASSWORD = :p_PSWD WHERE U_ID = :p_ID";
+	private static final String UPDATE_RESET_PASSWORD_TOKEN = "UPDATE USERS SET U_RESET_PASS_TOKEN = :p_RESET_TOKEN, U_TOKEN_EXPIRE_DATE = :p_EXPIRE_DATE  WHERE U_ID = :p_ID";
+	private static final String SELECT_RESET_TOKEN = "SELECT U_ID, U_EMAIL, U_RESET_PASS_TOKEN, U_TOKEN_EXPIRE_DATE FROM USERS WHERE U_RESET_PASS_TOKEN = :p_RESET_TOKEN";
 
 	private static final int EXPECTED_ROW_NUMBER = 1;
 
@@ -40,6 +43,8 @@ public class JdbcUserDao implements UserDao {
 	private static final String NAME = "U_NAME";
 	private static final String SURNAME = "U_SURNAME";
 	private static final String BIRTHDAY = "U_BIRTHDAY";
+	private static final String RESET_PASS_TOKEN = "U_RESET_PASS_TOKEN";
+	private static final String TOKEN_EXPIRE_DATE = "U_TOKEN_EXPIRE_DATE";
 
 	private static final String EMAIL_PARAM = "p_EMAIL";
 	private static final String PSWD_PARAM = "p_PSWD";
@@ -49,6 +54,8 @@ public class JdbcUserDao implements UserDao {
 	private static final String ID_PARAM = "p_ID";
 	private static final String OLD_PSWD_PARAM = "p_OLD_PSWD";
 	private static final String NEW_PSWD_PARAM = "p_NEW_PSWD";
+	private static final String RESET_PASS_PARAM = "p_RESET_TOKEN";
+	private static final String EXPIRE_DATE_PARAM = "p_EXPIRE_DATE";
 
 	private NamedParameterJdbcTemplate jdbcTemplate;
 
@@ -91,16 +98,19 @@ public class JdbcUserDao implements UserDao {
 		return updated;
 	}
 
-	public boolean restorePswd(String email, String newPswd) {
-		boolean updated = false;
-		MapSqlParameterSource namedParameters = new MapSqlParameterSource().addValue(EMAIL_PARAM, email).addValue(PSWD_PARAM, newPswd);
-		int rowsAffected = this.jdbcTemplate.update(UPDATE_PSWD_BY_EMAIL, namedParameters);
-		if (rowsAffected == EXPECTED_ROW_NUMBER) {
-			updated = true;
-		}
-		return updated;
+	@Override
+	public void restorePswd(long id, String newPswd) {
+		// boolean updated = false;
+		MapSqlParameterSource namedParameters = new MapSqlParameterSource().addValue(ID_PARAM, id).addValue(PSWD_PARAM, newPswd);
+		int rowsAffected = this.jdbcTemplate.update(UPDATE_PSWD_BY_ID, namedParameters);
+
+		/*
+		 * if (rowsAffected == EXPECTED_ROW_NUMBER) { updated = true; } return
+		 * updated;
+		 */
 	}
 
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public User editProfile(User user) {
 		SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(user);
@@ -108,6 +118,42 @@ public class JdbcUserDao implements UserDao {
 		this.jdbcTemplate.update(UPDATE_USER_BY_ID, namedParameters);
 
 		return this.jdbcTemplate.queryForObject(SELECT_USER_BY_ID, idNamedParameters, new UserMapper());
+	}
+
+	@Override
+	public void savePaswordResetToken(PasswordResetToken resetPassToken) {
+		MapSqlParameterSource namedParameters = new MapSqlParameterSource().addValue(ID_PARAM, resetPassToken.getUser().getId()).addValue(RESET_PASS_PARAM, resetPassToken.getToken())
+				.addValue(EXPIRE_DATE_PARAM, resetPassToken.getExpiryDate());
+		this.jdbcTemplate.update(UPDATE_RESET_PASSWORD_TOKEN, namedParameters);
+
+	}
+
+	@Override
+	public PasswordResetToken findPasswordResetToken(String token) {
+		PasswordResetToken passwordResetToken = null;
+		MapSqlParameterSource namedParameters = new MapSqlParameterSource(RESET_PASS_PARAM, token);
+
+		try {
+			passwordResetToken = this.jdbcTemplate.queryForObject(SELECT_RESET_TOKEN, namedParameters, new RowMapper<PasswordResetToken>() {
+
+				@Override
+				public PasswordResetToken mapRow(ResultSet rs, int rowNum) throws SQLException {
+					PasswordResetToken token = new PasswordResetToken();
+					User user = new User();
+					user.setId(rs.getInt(USER_ID));
+					user.setEmail(rs.getString(EMAIL));
+
+					token.setUser(user);
+					token.setToken(rs.getString(RESET_PASS_TOKEN));
+					token.setExpiryDate(rs.getDate(TOKEN_EXPIRE_DATE));
+					return token;
+
+				}
+			});
+		} catch (EmptyResultDataAccessException e) {
+			passwordResetToken = null;
+		}
+		return passwordResetToken;
 	}
 
 	private static class UserMapper implements RowMapper<User> {

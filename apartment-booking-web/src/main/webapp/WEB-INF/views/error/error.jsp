@@ -7,9 +7,10 @@
 <html>
 <head>
 
-<title>Error - database makes tricks </title>
+<title>Error - common page</title>
 <link rel="shortcut icon"
-	href="<c:url value="${pageContext.request.contextPath}/resources/img/q_logo.png" />" type="image/png">
+	href="<c:url value="${pageContext.request.contextPath}/resources/img/q_logo.png" />"
+	type="image/png">
 <link rel="stylesheet"
 	href="<c:url value="${pageContext.request.contextPath}/resources/css/user_authorization_style.css" />">
 </head>
@@ -20,11 +21,12 @@
 		<div class="content">
 			<section>
 				<div class="wall_content wide_block">
-
-					<h1>databaseError</h1>
+				
+					<h1>common error</h1>
+					
 				</div>
 			</section>
 		</div>
-	</div>		
+	</div>
 </body>
 </html>

@@ -7,18 +7,18 @@ public class ApartmentType extends Entity {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private int id;
+	private long id;
 	private String type;
 	private String description;
 
 	public ApartmentType() {
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -43,7 +43,7 @@ public class ApartmentType extends Entity {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + id;
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}

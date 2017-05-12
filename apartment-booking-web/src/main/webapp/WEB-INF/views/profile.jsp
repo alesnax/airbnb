@@ -11,57 +11,61 @@
 <title>User profile</title>
 
 <link rel="shortcut icon"
-	href="<c:url value="${pageContext.request.contextPath}/resources/img/q_logo.png" />" type="image/png">
+	href="<c:url value="${pageContext.request.contextPath}/resources/img/q_logo.png" />"
+	type="image/png">
 <link rel="stylesheet"
 	href="<c:url value="${pageContext.request.contextPath}/resources/css/user_profile_style.css" />">
 </head>
 <body>
 
- <c:import url="template/header_common.jsp"/> 
-<div class="page_layout">
-    <div class="content">
-        <section>
-            <div class="top_block">
-                <div class="page_block photo_block">
-                    <div class="page_avatar">
-                        <div class="photo-wrap">
+	<c:import url="template/header_common.jsp" />
+	<div class="page_layout">
+		<div class="content">
+			<section>
+				<div class="top_block">
+					<div class="page_block photo_block">
+						<div class="page_avatar">
+							<div class="photo-wrap">
 
-                            <img class="avatar" src="<c:url value="${pageContext.request.contextPath}/resources/img/no_avatar.jpg" />" alt="no_photo" 
-                            onerror="src='${pageContext.request.contextPath}/resources/img/no_avatar.jpg'">
-   
- 						<!-- 	<img class="avatar" src="/resources/img/no_avatar.jpg" alt="no_photo" > -->
-                   </div>
-                             <div class="profile_edit">
-                                    <a class="profile_edit_act" href="/user/edit">
-                                        <spring:message code="profile.edit_profile_text"/>
-                                    </a>
-                             </div>
-                    </div>
-                </div>
-                <div class="page_block short_info_block">
-                    <div class="profile_name">
-                        <h1>${user.name} ${user.surname}</h1>
-                    </div>
-                    <div class="short_info">
-                        <table>
-                            <tbody>
-                            <tr>
-                                <td class="info_label"><spring:message code="profile.birthday_text"/></td>
-                                <td class="info_labeled">${user.birthday} </td>
-                            </tr>
-                            <c:if test="${not empty user.email}">
-                                <tr>
-                                    <td class="info_label"><spring:message code="profile.email_text"/></td>
-                                    <td class="info_labeled">${user.email}</td>
-                                </tr>
-                            </c:if>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
+								<img class="avatar"
+									src="<c:url value="${pageContext.request.contextPath}/resources/img/${user.avatar}" />"
+									alt="no_photo"
+									onerror="src='${pageContext.request.contextPath}/resources/img/no_avatar.jpg'">
+
+							</div>
+							<div class="profile_edit">
+								<a class="profile_edit_act" href="/user/edit"> <spring:message code="profile.edit_profile_text" />
+								</a>
+							</div>
+						</div>
+					</div>
+				
+					<div class="page_block short_info_block">
+						<div class="profile_name">
+							<h1>${user.name}${user.surname}</h1>
+						</div>
+						<div class="short_info">
+							<table>
+								<tbody>
+									<tr>
+										<td class="info_label"><spring:message
+												code="profile.birthday_text" /></td>
+										<td class="info_labeled">${user.birthday}</td>
+									</tr>
+									<c:if test="${not empty user.email}">
+										<tr>
+											<td class="info_label"><spring:message
+													code="profile.email_text" /></td>
+											<td class="info_labeled">${user.email}</td>
+										</tr>
+									</c:if>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
 </body>
 </html>

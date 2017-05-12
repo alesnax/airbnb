@@ -7,7 +7,7 @@ public class Location extends Entity {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private int id;
+	private long id;
 	private String country;
 	private String city;
 	private String street;
@@ -17,11 +17,11 @@ public class Location extends Entity {
 
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -64,7 +64,7 @@ public class Location extends Entity {
 		result = prime * result + ((buildingNo == null) ? 0 : buildingNo.hashCode());
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((country == null) ? 0 : country.hashCode());
-		result = prime * result + id;
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((street == null) ? 0 : street.hashCode());
 		return result;
 	}

@@ -6,17 +6,19 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.MappedInterceptor;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
@@ -30,10 +32,17 @@ import com.epam.apartment.interceptor.UserNotAuthorisatedInterceptor;
 
 @Configuration
 @EnableWebMvc
-@EnableAsync
 @ComponentScan(basePackages = { "com.epam.apartment" })
-@ImportResource("classpath:/applicationContext-service.xml")
+// @ImportResource({ "classpath:/applicationContext-service.xml" })
+@Import({ ServiceApplicationConfiguration.class })
 public class ApplicationWebConfig extends WebMvcConfigurerAdapter {
+
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		super.addViewControllers(registry);
+
+		registry.addViewController("/login.html");
+	}
 
 	// Configure a JSP view resolver
 	@Bean
@@ -48,7 +57,6 @@ public class ApplicationWebConfig extends WebMvcConfigurerAdapter {
 	@Bean(name = "messageSource")
 	public ReloadableResourceBundleMessageSource reloadableResourceBundleMessageSource() {
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-		messageSource.setBasenames("classpath:/i18n/ValidationMessages");
 		messageSource.setBasenames("classpath:/i18n/messages");
 		messageSource.setDefaultEncoding("UTF-8");
 		return messageSource;
@@ -70,14 +78,15 @@ public class ApplicationWebConfig extends WebMvcConfigurerAdapter {
 		registry.addInterceptor(localeChangeInterceptor);
 
 		// register User not authorisated interceptor
-		registry.addInterceptor(new MappedInterceptor(new String[] { "/user/**" }, new String[] { "/user/login", "/user/registration" }, new UserNotAuthorisatedInterceptor()));
+		registry.addInterceptor(new MappedInterceptor(new String[] { "/user/**" },
+				new String[] { "/user/login", "/user/registration", "/user/forgot_pass", "/user/restorePassSend", "/user/changePassword" }, new UserNotAuthorisatedInterceptor()));
 
 		// register User not authorisated interceptor
 		registry.addInterceptor(new MappedInterceptor(new String[] { "/user/login", "/user/registration" }, new UserAuthorisatedInterceptor()));
 
 	}
 
-	@Bean(name = "localeResolver")
+	@Bean
 	public LocaleResolver localeResolver() {
 		SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
 		sessionLocaleResolver.setDefaultLocale(new Locale("en"));
@@ -90,6 +99,13 @@ public class ApplicationWebConfig extends WebMvcConfigurerAdapter {
 		messageSource.setBasename("classpath:i18n/ValidationMessages");
 		messageSource.setCacheSeconds(20); // reload messages every 20 seconds
 		return messageSource;
+	}
+
+	@Bean
+	public MultipartResolver multipartResolver() {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		multipartResolver.setMaxUploadSize(2097152);
+		return multipartResolver;
 	}
 
 	@Override

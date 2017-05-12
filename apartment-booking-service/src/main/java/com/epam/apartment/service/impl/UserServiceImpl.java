@@ -3,6 +3,7 @@ package com.epam.apartment.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,15 +11,20 @@ import com.epam.apartment.dao.UserDao;
 import com.epam.apartment.dto.EditedUserDto;
 import com.epam.apartment.dto.UserDto;
 import com.epam.apartment.exception.EmailExistsException;
+import com.epam.apartment.model.PasswordResetToken;
 import com.epam.apartment.model.User;
 import com.epam.apartment.service.UserService;
 
 @Service("userService")
 @Scope(value = "singleton")
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Transactional
 	@Override
@@ -32,23 +38,22 @@ public class UserServiceImpl implements UserService {
 		user.setSurname(accountDto.getSurname());
 		user.setEmail(accountDto.getEmail());
 		user.setBirthday(accountDto.getBirthday());
+		String encryptedPassword = passwordEncoder.encode(accountDto.getPassword());
 
-		return userDao.registerNewUser(user, accountDto.getPassword());
+		return userDao.registerNewUser(user, encryptedPassword);
 	}
 
 	@Override
 	public User authoriseUser(String email, String password) {
-		return userDao.authoriseUser(email, password);
+		String encryptedPassword = passwordEncoder.encode(password);
+		return userDao.authoriseUser(email, encryptedPassword);
 	}
 
 	@Override
 	public boolean changePswd(int id, String oldPswd, String newPswd) {
-		return userDao.changePswd(id, oldPswd, newPswd);
-	}
-
-	@Override
-	public boolean restorePswd(String email, String pswd, String copyPswd) {
-		return userDao.restorePswd(email, pswd);
+		String oldEncryptedPassword = passwordEncoder.encode(oldPswd);
+		String newEncryptedPassword = passwordEncoder.encode(newPswd);
+		return userDao.changePswd(id, oldEncryptedPassword, newEncryptedPassword);
 	}
 
 	@Transactional
@@ -67,6 +72,29 @@ public class UserServiceImpl implements UserService {
 			throw new EmailExistsException("There is an account with that email address: " + editedUser.getEmail());
 		}
 		return updatedUser;
+	}
+
+	@Override
+	public void restorePswd(long id, String newPassword) {
+		String encryptedPassword = passwordEncoder.encode(newPassword);
+		userDao.restorePswd(id, encryptedPassword);
+	}
+
+	@Override
+	public PasswordResetToken getPasswordResetToken(String token) {
+
+		return userDao.findPasswordResetToken(token);
+	}
+
+	@Override
+	public void createPasswordResetTokenForUser(User user, String token) {
+		PasswordResetToken resetPassToken = new PasswordResetToken(token, user);
+		userDao.savePaswordResetToken(resetPassToken);
+	}
+
+	public User findUserByEmail(String email) {
+
+		return userDao.findByEmail(email);
 	}
 
 	private boolean emailExist(String email) {
