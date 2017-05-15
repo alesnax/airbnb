@@ -5,13 +5,9 @@ import com.epam.apartment.model.User;
 
 public interface UserDao {
 
-	User registerNewUser(User user, String password);
+	void insertNewUser(User user, String password);
 
-	User authoriseUser(String email, String pswd);
-
-	boolean changePswd(int id, String oldPswd, String newPswd);
-
-	// boolean restorePswd(String email, String newPswd);
+	boolean changePswd(int id, String newPswd);
 
 	User editProfile(User user);
 
@@ -22,4 +18,6 @@ public interface UserDao {
 	PasswordResetToken findPasswordResetToken(String token);
 
 	void restorePswd(long id, String newPassword);
+
+	User findById(long id);
 }

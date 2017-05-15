@@ -9,7 +9,6 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -23,7 +22,6 @@ import com.epam.apartment.model.ApartmentType;
 import com.epam.apartment.model.Location;
 
 @Repository
-@Scope(value = "singleton")
 public class JdbcApartmentDao implements ApartmentDao {
 
 	private static final String SELECT_AVAILABLE_APARTMENTS = "SELECT AP_ID, AP_NAME, AP_PRICE, AP_MAX_GUEST_NUMBER, LO_ID, LO_COUNTRY, LO_CITY, LO_STREET, LO_BUILDING_NO, TY_TYPE, TY_DESCRIPTION "

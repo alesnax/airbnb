@@ -1,7 +1,6 @@
 package com.epam.apartment.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,9 +14,7 @@ import com.epam.apartment.model.PasswordResetToken;
 import com.epam.apartment.model.User;
 import com.epam.apartment.service.UserService;
 
-@Service("userService")
-@Scope(value = "singleton")
-@Transactional
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -40,20 +37,33 @@ public class UserServiceImpl implements UserService {
 		user.setBirthday(accountDto.getBirthday());
 		String encryptedPassword = passwordEncoder.encode(accountDto.getPassword());
 
-		return userDao.registerNewUser(user, encryptedPassword);
+		userDao.insertNewUser(user, encryptedPassword);
+		return userDao.findByEmail(accountDto.getEmail());
 	}
 
 	@Override
 	public User authoriseUser(String email, String password) {
-		String encryptedPassword = passwordEncoder.encode(password);
-		return userDao.authoriseUser(email, encryptedPassword);
+		User user = userDao.findByEmail(email);
+		if (user != null && !passwordEncoder.matches(password, user.getPassword())) {
+			user = null;
+		}
+		user.setPassword(null);
+		return user;
 	}
 
 	@Override
 	public boolean changePswd(int id, String oldPswd, String newPswd) {
-		String oldEncryptedPassword = passwordEncoder.encode(oldPswd);
+		boolean changed = false;
 		String newEncryptedPassword = passwordEncoder.encode(newPswd);
-		return userDao.changePswd(id, oldEncryptedPassword, newEncryptedPassword);
+
+		User user = userDao.findById(id);
+		if (passwordEncoder.matches(oldPswd, user.getPassword())) {
+			userDao.changePswd(id, newEncryptedPassword);
+			changed = true;
+
+		}
+
+		return changed;
 	}
 
 	@Transactional
@@ -82,7 +92,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public PasswordResetToken getPasswordResetToken(String token) {
-
 		return userDao.findPasswordResetToken(token);
 	}
 
@@ -92,9 +101,11 @@ public class UserServiceImpl implements UserService {
 		userDao.savePaswordResetToken(resetPassToken);
 	}
 
+	@Override
 	public User findUserByEmail(String email) {
-
-		return userDao.findByEmail(email);
+		User user = userDao.findByEmail(email);
+		user.setPassword(null);
+		return user;
 	}
 
 	private boolean emailExist(String email) {
@@ -104,5 +115,4 @@ public class UserServiceImpl implements UserService {
 		}
 		return false;
 	}
-
 }

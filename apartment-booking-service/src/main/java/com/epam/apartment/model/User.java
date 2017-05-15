@@ -15,6 +15,7 @@ public class User extends Entity {
 	private String surname;
 	private LocalDate birthday;
 	private String avatar;
+	private String password;
 	// private List<String> roles;
 
 	public User() {
@@ -75,6 +76,14 @@ public class User extends Entity {
 	 * public void setRoles(List<String> roles) { this.roles = roles; }
 	 */
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -84,7 +93,7 @@ public class User extends Entity {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		// result = prime * result + ((roles == null) ? 0 : roles.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 		return result;
 	}
@@ -120,10 +129,11 @@ public class User extends Entity {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		/*
-		 * if (roles == null) { if (other.roles != null) return false; } else if
-		 * (!roles.equals(other.roles)) return false;
-		 */
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
 		if (surname == null) {
 			if (other.surname != null)
 				return false;
@@ -145,6 +155,10 @@ public class User extends Entity {
 		builder.append(surname);
 		builder.append(", birthday=");
 		builder.append(birthday);
+		builder.append(", avatar=");
+		builder.append(avatar);
+		builder.append(", password=");
+		builder.append(password);
 		builder.append("]");
 		return builder.toString();
 	}

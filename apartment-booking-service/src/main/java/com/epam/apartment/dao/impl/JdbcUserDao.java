@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -22,16 +21,14 @@ import com.epam.apartment.dao.UserDao;
 import com.epam.apartment.model.PasswordResetToken;
 import com.epam.apartment.model.User;
 
-@Repository("userDao")
-@Scope(value = "singleton")
+@Repository
 public class JdbcUserDao implements UserDao {
 
 	private static final String INSERT_USER_SQL = "INSERT INTO USERS (U_EMAIL, U_NAME, U_SURNAME, U_PASSWORD, U_BIRTHDAY) VALUES (:p_EMAIL, :p_NAME, :p_SURNAME, :p_PSWD, :p_BIRTHDAY)";
-	private static final String SELECT_USER_BY_PSWD = "SELECT U_ID, U_EMAIL, U_NAME, U_SURNAME, U_BIRTHDAY FROM USERS WHERE U_EMAIL = :p_EMAIL AND U_PASSWORD = :p_PSWD";
-	private static final String SELECT_USER_BY_EMAIL = "SELECT U_ID, U_EMAIL, U_NAME, U_SURNAME, U_BIRTHDAY FROM USERS WHERE U_EMAIL = :p_EMAIL";
-	private static final String UPDATE_PASSWORD_BY_ID = "UPDATE USERS SET U_PASSWORD = :p_NEW_PSWD WHERE U_ID = :p_ID AND U_PASSWORD = :p_OLD_PSWD";
+	private static final String SELECT_USER_BY_EMAIL = "SELECT U_ID, U_EMAIL, U_NAME, U_SURNAME, U_BIRTHDAY, U_PASSWORD FROM USERS WHERE U_EMAIL = :p_EMAIL";
+	private static final String UPDATE_PASSWORD_BY_ID = "UPDATE USERS SET U_PASSWORD = :p_NEW_PSWD WHERE U_ID = :p_ID";
 	private static final String UPDATE_USER_BY_ID = "UPDATE USERS SET U_EMAIL = :email, U_NAME = :name, U_SURNAME = :surname WHERE U_ID = :id";
-	private static final String SELECT_USER_BY_ID = "SELECT U_ID, U_EMAIL, U_NAME, U_SURNAME, U_BIRTHDAY FROM USERS WHERE U_ID = :p_ID";
+	private static final String SELECT_USER_BY_ID = "SELECT U_ID, U_EMAIL, U_NAME, U_SURNAME, U_BIRTHDAY, U_PASSWORD FROM USERS WHERE U_ID = :p_ID";
 	private static final String UPDATE_PSWD_BY_ID = "UPDATE USERS SET U_PASSWORD = :p_PSWD WHERE U_ID = :p_ID";
 	private static final String UPDATE_RESET_PASSWORD_TOKEN = "UPDATE USERS SET U_RESET_PASS_TOKEN = :p_RESET_TOKEN, U_TOKEN_EXPIRE_DATE = :p_EXPIRE_DATE  WHERE U_ID = :p_ID";
 	private static final String SELECT_RESET_TOKEN = "SELECT U_ID, U_EMAIL, U_RESET_PASS_TOKEN, U_TOKEN_EXPIRE_DATE FROM USERS WHERE U_RESET_PASS_TOKEN = :p_RESET_TOKEN";
@@ -45,6 +42,7 @@ public class JdbcUserDao implements UserDao {
 	private static final String BIRTHDAY = "U_BIRTHDAY";
 	private static final String RESET_PASS_TOKEN = "U_RESET_PASS_TOKEN";
 	private static final String TOKEN_EXPIRE_DATE = "U_TOKEN_EXPIRE_DATE";
+	private static final String PASSWORD = "U_PASSWORD";
 
 	private static final String EMAIL_PARAM = "p_EMAIL";
 	private static final String PSWD_PARAM = "p_PSWD";
@@ -52,7 +50,6 @@ public class JdbcUserDao implements UserDao {
 	private static final String SURNAME_PARAM = "p_SURNAME";
 	private static final String BIRTHDAY_PARAM = "p_BIRTHDAY";
 	private static final String ID_PARAM = "p_ID";
-	private static final String OLD_PSWD_PARAM = "p_OLD_PSWD";
 	private static final String NEW_PSWD_PARAM = "p_NEW_PSWD";
 	private static final String RESET_PASS_PARAM = "p_RESET_TOKEN";
 	private static final String EXPIRE_DATE_PARAM = "p_EXPIRE_DATE";
@@ -64,18 +61,8 @@ public class JdbcUserDao implements UserDao {
 		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public User authoriseUser(String email, String pswd) {
-		MapSqlParameterSource namedParameters = new MapSqlParameterSource().addValue(EMAIL_PARAM, email).addValue(PSWD_PARAM, pswd);
-		User user = null;
-		try {
-			user = this.jdbcTemplate.queryForObject(SELECT_USER_BY_PSWD, namedParameters, new UserMapper());
-		} catch (EmptyResultDataAccessException e) {
-			user = null;
-		}
-		return user;
-	}
-
-	public User registerNewUser(User user, String password) {
+	@Override
+	public void insertNewUser(User user, String password) {
 		Date bithday = user.getBirthday() != null ? Date.valueOf(user.getBirthday()) : null;
 
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
@@ -83,13 +70,12 @@ public class JdbcUserDao implements UserDao {
 				bithday);
 
 		this.jdbcTemplate.update(INSERT_USER_SQL, namedParameters);
-		return authoriseUser(user.getEmail(), password);
-
 	}
 
-	public boolean changePswd(int id, String oldPswd, String newPswd) {
+	@Override
+	public boolean changePswd(int id, String newPswd) {
 		boolean updated = false;
-		SqlParameterSource namedParameters = new MapSqlParameterSource().addValue(ID_PARAM, id).addValue(OLD_PSWD_PARAM, oldPswd).addValue(NEW_PSWD_PARAM, newPswd);
+		SqlParameterSource namedParameters = new MapSqlParameterSource().addValue(ID_PARAM, id).addValue(NEW_PSWD_PARAM, newPswd);
 
 		int rowsAffected = this.jdbcTemplate.update(UPDATE_PASSWORD_BY_ID, namedParameters);
 		if (rowsAffected == EXPECTED_ROW_NUMBER) {
@@ -102,7 +88,7 @@ public class JdbcUserDao implements UserDao {
 	public void restorePswd(long id, String newPswd) {
 		// boolean updated = false;
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource().addValue(ID_PARAM, id).addValue(PSWD_PARAM, newPswd);
-		int rowsAffected = this.jdbcTemplate.update(UPDATE_PSWD_BY_ID, namedParameters);
+		this.jdbcTemplate.update(UPDATE_PSWD_BY_ID, namedParameters);
 
 		/*
 		 * if (rowsAffected == EXPECTED_ROW_NUMBER) { updated = true; } return
@@ -156,6 +142,30 @@ public class JdbcUserDao implements UserDao {
 		return passwordResetToken;
 	}
 
+	@Override
+	public User findByEmail(String email) {
+		MapSqlParameterSource namedParameters = new MapSqlParameterSource().addValue(EMAIL_PARAM, email);
+		User user = null;
+		try {
+			user = this.jdbcTemplate.queryForObject(SELECT_USER_BY_EMAIL, namedParameters, new UserPassMapper());
+		} catch (EmptyResultDataAccessException e) {
+			user = null;
+		}
+		return user;
+	}
+
+	@Override
+	public User findById(long id) {
+		MapSqlParameterSource namedParameters = new MapSqlParameterSource().addValue(ID_PARAM, id);
+		User user = null;
+		try {
+			user = this.jdbcTemplate.queryForObject(SELECT_USER_BY_ID, namedParameters, new UserPassMapper());
+		} catch (EmptyResultDataAccessException e) {
+			user = null;
+		}
+		return user;
+	}
+
 	private static class UserMapper implements RowMapper<User> {
 		public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 			User user = new User();
@@ -167,20 +177,26 @@ public class JdbcUserDao implements UserDao {
 			if (birthday != null) {
 				user.setBirthday(birthday.toLocalDate());
 			}
+
 			return user;
 		}
 	}
 
-	@Override
-	public User findByEmail(String email) {
-		MapSqlParameterSource namedParameters = new MapSqlParameterSource().addValue(EMAIL_PARAM, email);
-		User user = null;
-		try {
-			user = this.jdbcTemplate.queryForObject(SELECT_USER_BY_EMAIL, namedParameters, new UserMapper());
-		} catch (EmptyResultDataAccessException e) {
-			user = null;
+	private static class UserPassMapper implements RowMapper<User> {
+		public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+			User user = new User();
+			user.setId(rs.getInt(USER_ID));
+			user.setEmail(rs.getString(EMAIL));
+			user.setName(rs.getString(NAME));
+			user.setSurname(rs.getString(SURNAME));
+			Date birthday = rs.getDate(BIRTHDAY);
+			if (birthday != null) {
+				user.setBirthday(birthday.toLocalDate());
+			}
+			user.setPassword(rs.getString(PASSWORD));
+
+			return user;
 		}
-		return user;
 	}
 
 }

@@ -82,7 +82,7 @@ public class ApplicationWebConfig extends WebMvcConfigurerAdapter {
 				new String[] { "/user/login", "/user/registration", "/user/forgot_pass", "/user/restorePassSend", "/user/changePassword" }, new UserNotAuthorisatedInterceptor()));
 
 		// register User not authorisated interceptor
-		registry.addInterceptor(new MappedInterceptor(new String[] { "/user/login", "/user/registration" }, new UserAuthorisatedInterceptor()));
+		registry.addInterceptor(new MappedInterceptor(new String[] { "/login", "/registration", "/user/forgot_pass" }, new UserAuthorisatedInterceptor()));
 
 	}
 

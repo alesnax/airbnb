@@ -16,6 +16,12 @@ public class MailServiceImpl implements MailService {
 	@Autowired
 	JavaMailSender mailSender;
 
+	@Override
+	public void sendEmail(String subject, String body, String email) {
+		MimeMessagePreparator preparator = getMessagePreparator(subject, body, email);
+		mailSender.send(preparator);
+	}
+
 	private MimeMessagePreparator getMessagePreparator(String subject, String body, String email) {
 		MimeMessagePreparator preparator = new MimeMessagePreparator() {
 
@@ -36,12 +42,6 @@ public class MailServiceImpl implements MailService {
 		};
 		return preparator;
 
-	}
-
-	@Override
-	public void sendEmail(String subject, String body, String email) {
-		MimeMessagePreparator preparator = getMessagePreparator(subject, body, email);
-		mailSender.send(preparator);
 	}
 
 }

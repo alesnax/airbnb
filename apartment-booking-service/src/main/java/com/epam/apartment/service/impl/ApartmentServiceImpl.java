@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.epam.apartment.dao.ApartmentDao;
@@ -14,7 +13,6 @@ import com.epam.apartment.service.ApartmentService;
 import com.epam.apartment.service.ServiceException;
 
 @Service
-@Scope(value = "singleton")
 public class ApartmentServiceImpl implements ApartmentService {
 
 	@Autowired

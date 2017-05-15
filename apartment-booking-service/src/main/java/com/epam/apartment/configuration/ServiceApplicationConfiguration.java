@@ -22,7 +22,7 @@ public class ServiceApplicationConfiguration {
 		return new BCryptPasswordEncoder(11);
 	}
 
-	@Bean
+	@Bean(destroyMethod = "close")
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
